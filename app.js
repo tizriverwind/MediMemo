@@ -21,7 +21,9 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+// changed from "public" to "front", "dist"
+// vite is going to take the react code and covert it into code that can be served into as standard html
+app.use(express.static(path.join(__dirname, "front", "dist")));
 
 app.use("/", indexRouter);
 // commented out based on class video,but can use for login stuff?
