@@ -1,19 +1,20 @@
 import express from "express";
-import path from "path";
+import path, { dirname } from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import { fileURLToPath } from "url";
 
 import indexRouter from "./routes/index.js";
 // commented out based on class video, but can use for login stuff?
 // import usersRouter from "./routes/users.js";
 
 // Copiolet generated code from class
-import { fileURLToPath } from "url";
-import { dirname } from "path";
+// import { fileURLToPath } from "url"; moved to line 5
+// import { dirname } from "path"; moved to line 2
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-// /copiolet generated
+
 let app = express();
 
 app.use(logger("dev"));

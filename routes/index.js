@@ -3,7 +3,8 @@ let router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
+  // Send a response without rendering a view
+  res.send("Welcome to MediMemo!");
 });
 
 export default router;
