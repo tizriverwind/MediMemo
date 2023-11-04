@@ -25,5 +25,6 @@
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
     "vite": "^4.4.5"
-  }
+  },
+  "proxy": "http://localhost:3000"
 }
