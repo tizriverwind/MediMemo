@@ -7,6 +7,13 @@ import indexRouter from "./routes/index.js";
 // commented out based on class video, but can use for login stuff?
 // import usersRouter from "./routes/users.js";
 
+// Copiolet generated code from class
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+// /copiolet generated
 let app = express();
 
 app.use(logger("dev"));
