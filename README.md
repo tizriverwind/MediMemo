@@ -27,5 +27,3 @@ Medimemo is an online platform designed for healthcare providers to optimize the
 ## Features
 
 ## Screenshots
-
-testing commit
