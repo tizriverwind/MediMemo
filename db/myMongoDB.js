@@ -36,6 +36,23 @@ function MyMongoDB() {
       await client.close();
     }
   };
+
+  // method to add appointmentt to db
+  myDB.addAppointment = async function (appointmentData) {
+    const { client, db } = await connect();
+    try {
+      const appointment = await db
+        .collection("appointments")
+        .insertOne(appointmentData);
+      console.log("Inserted appointment:", appointment); // Log the inserted appointment to see if it works
+      return appointment;
+    } catch (error) {
+      console.error("Error inserting appointment:", error);
+      throw error;
+    } finally {
+      await client.close();
+    }
+  };
   return myDB;
 }
 

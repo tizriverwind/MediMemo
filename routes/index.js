@@ -35,4 +35,23 @@ router.route("/").get(async (req, res) => {
   }
 });
 
+// to add pointments to db
+router.route("/").post(async (req, res) => {
+  try {
+    const newAppointment = await myDB.addAppointment(req.body);
+    res.status(201).json({
+      status: "success",
+      data: {
+        appointment: newAppointment,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Error adding the appointment",
+      error: error.message,
+    });
+  }
+});
+
 export default router;
