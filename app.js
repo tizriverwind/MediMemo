@@ -1,4 +1,5 @@
 import express from "express";
+import morgan from "morgan";
 import path, { dirname } from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
@@ -18,14 +19,16 @@ const __dirname = dirname(__filename);
 let app = express();
 
 app.use(logger("dev"));
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 app.use(cookieParser());
 // changed from "public" to "front", "dist"
 // vite is going to take the react code and covert it into code that can be served into as standard html
 app.use(express.static(path.join(__dirname, "front", "dist")));
 
-app.use("/", indexRouter);
+app.use("/api/appointments", indexRouter);
 // commented out based on class video,but can use for login stuff?
 // app.use("/users", usersRouter);
 

@@ -1,8 +1,13 @@
 import { MongoClient } from "mongodb";
+import "dotenv/config";
 
 function MyMongoDB() {
   const myDB = {};
-  const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
+
+  const uri = process.env.DATABASE.replace(
+    "<PASSWORD>",
+    process.env.DATABASE_PASSWORD
+  );
 
   async function connect() {
     try {
