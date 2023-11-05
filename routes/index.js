@@ -1,11 +1,14 @@
 import express from "express";
 let router = express.Router();
 
+import myDB from "../db/myMongoDB.js";
 /* GET home page. */
-router.get("/api/data", function (req, res, next) {
+router.get("/api/apointments", async function (req, res, next) {
   // Send a response without rendering a view
   //res.send("Welcome to MediMemo!");
-  res.json([1, 2, 3]);
+
+  const appointments = await myDB.getAppointments();
+  res.json(appointments);
 });
 
 export default router;
