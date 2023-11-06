@@ -1,7 +1,8 @@
 // src/components/HomePage.jsx
 
 import React from "react";
-import WelcomeMessage from "./WelcomeMessage.jsx"; // Adjust the path as necessary
+import WelcomeMessage from "../WelcomeMessage/WelcomeMessage.jsx";
+// Adjust the path as necessary
 import "./HomePage.css";
 
 const HomePage = () => {

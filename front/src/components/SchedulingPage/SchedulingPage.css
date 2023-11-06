@@ -1,0 +1,20 @@
+.scheduling-container {
+  margin-left: 300px;
+}
+/* .appointments-list {
+  border: 1px solid black; 
+  padding: 10px;
+}
+
+.appointment {
+  border-bottom: 1px solid #ccc; 
+  padding: 5px;
+} */
+.success-message {
+  color: green;
+  background-color: #eaffea;
+  border-left: 5px solid green;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}

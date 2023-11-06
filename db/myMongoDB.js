@@ -53,6 +53,23 @@ function MyMongoDB() {
       await client.close();
     }
   };
+
+  //   // Method to delete an appointment from the database
+  //   myDB.deleteAppointment = async function (appointmentId) {
+  //     const { client, db } = await connect();
+  //     try {
+  //       const result = await db
+  //         .collection("appointments")
+  //         .deleteOne({ _id: ObjectId(appointmentId) });
+  //       console.log("Deleted appointment:", result); // Log the result of the deletion
+  //       return result;
+  //     } catch (error) {
+  //       console.error("Error deleting appointment:", error);
+  //       throw error;
+  //     } finally {
+  //       await client.close();
+  //     }
+  //   };
   return myDB;
 }
 

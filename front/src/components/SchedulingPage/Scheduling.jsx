@@ -1,14 +1,30 @@
 import "./SchedulingPage.css";
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"; // this imports the default styling
-import Modal from "./Modal"; // Make sure the path to your modal component is correct
+import Modal from "../modalScheduling/Modal"; // Make sure the path to your modal component is correct
+// import AppointmentsSidebar from "../AppointmentSideBar/AppointmentSideBar"; // Import the appointment card component
 
 const Scheduling = () => {
   // ...component logic
   // here we are creating the states to track the selected states
   const [value, setValue] = useState(new Date());
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+
+  // useEffect hook to clear the success message after 5 seconds
+  useEffect(() => {
+    let timer;
+    if (successMessage) {
+      timer = setTimeout(() => {
+        setSuccessMessage("");
+      }, 5000);
+    }
+    // Clean up function
+    return () => clearTimeout(timer);
+  }, [successMessage]); // This will re-run every time successMessage changes
 
   const onDateChange = (nextValue) => {
     // Open modal or any other logic
@@ -25,6 +41,7 @@ const Scheduling = () => {
     why: "",
     patient_phone: "",
   });
+
   //   handleChange function updates the state of formData every time a user types in an input field,
   // ensuring that the formData state always reflects the current input values.
 
@@ -39,6 +56,7 @@ const Scheduling = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Form submitted"); //TESTING
     // Prevents the default form submission behavior, which is to reload the page,
     // allowing us to handle the submission process manually with JavaScript for a
     // smoother user experience without a page refresh.
@@ -52,9 +70,12 @@ const Scheduling = () => {
         },
         body: JSON.stringify(formData),
       });
-
+      console.log("Response status:", response.status); // TESTING
       if (response.ok) {
         // Handle successful submission here
+        console.log("Setting success message"); // TESTING
+        const newAppointment = await response.json(); // Make sure the server sends back the new appointment data
+        setSuccessMessage("Appointment scheduled successfully!");
         setIsModalOpen(false); // Close the modal after submission
       } else {
         // Handle errors here
@@ -68,6 +89,10 @@ const Scheduling = () => {
   return (
     <div className="scheduling-container">
       <h1>Scheduled an appointment below.</h1>
+      {successMessage && (
+        <div className="success-message">{successMessage}</div>
+      )}
+
       <Calendar onChange={onDateChange} value={value} />
       <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {/* collecting data here */}
@@ -114,6 +139,7 @@ const Scheduling = () => {
           <button type="submit">Submit</button>
         </form>
       </Modal>
+      {/* <AppointmentsSidebar /> */}
     </div>
   );
 };

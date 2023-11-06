@@ -32,4 +32,19 @@ app.use("/api/appointments", indexRouter);
 // commented out based on class video,but can use for login stuff?
 // app.use("/users", usersRouter);
 
+// app.delete("/api/appointments/:appointmentId", async (req, res) => {
+//   try {
+//     const result = await myDBInstance.deleteAppointment(
+//       req.params.appointmentId
+//     );
+//     if (result.deletedCount === 1) {
+//       res.status(204).send(); // No content to send back, but signifies success
+//     } else {
+//       res.status(404).send({ message: "Appointment not found" }); // Appointment not found
+//     }
+//   } catch (error) {
+//     res.status(500).send({ message: "Error deleting appointment", error }); // Internal Server Error
+//   }
+// });
+
 export default app;

@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Sidebar from "./components/Sidebar"; // Import sidebar component
-import PatientRecords from "./components/PatientRecords.jsx";
-import Scheduling from "./components/Scheduling.jsx";
-import HomePage from "./components/HomePage.jsx"; // Import the home page component
+import Sidebar from "./components/SideBar/Sidebar"; // Import sidebar component
+import PatientRecords from "./components/PatientRecords/PatientRecords.jsx";
+import Scheduling from "./components/SchedulingPage/Scheduling.jsx";
+import HomePage from "./components/HomePage/HomePage.jsx"; // Import the home page component
 
 export default function App() {
   async function testBack() {

@@ -1,0 +1,54 @@
+.appointments-sidebar {
+  background-color: #f7f7f7; /* Light grey background */
+  border-left: 1px solid #dcdcdc; /* Separator from the calendar */
+  padding: 20px;
+  width: 300px; /* Adjust the width as necessary */
+  height: auto; /* Or 100vh if you want it to take the full height */
+  overflow-y: auto; /* Enables scrolling if the list is long */
+  position: absolute; /* Position it next to the calendar */
+  right: 0; /* Align to the right */
+  top: 0;
+}
+
+.appointments-sidebar h2 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  font-weight: normal;
+}
+
+.appointments-sidebar ul {
+  list-style-type: none; /* Remove default list styles */
+  margin: 0;
+  padding: 0;
+}
+
+.appointments-sidebar li {
+  background-color: #ffffff; /* White background for each item */
+  padding: 10px;
+  margin-bottom: 10px; /* Spacing between items */
+  border-radius: 5px; /* Rounded corners for the items */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+.appointments-sidebar li:hover {
+  transform: translateY(-2px); /* Slight raise effect on hover */
+}
+
+/* You might want to style the date, time, and name parts differently */
+.appointment-date {
+  color: #555;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+.appointment-time {
+  color: #555;
+  font-weight: bold;
+}
+
+.appointment-name {
+  color: #555;
+  font-size: 0.8em;
+}
