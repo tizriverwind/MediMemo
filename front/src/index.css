@@ -1,0 +1,95 @@
+/* Taken from getting started guide at: https://leafletjs.com/examples/quick-start/ */
+/* @import "https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"; */
+@import "https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap";
+
+/* These CSS variables are global, so they are available in all CSS modules */
+:root {
+  --color-brand--1: #ffb545;
+  --color-brand--2: #fa5252;
+  --color-brand-light--1: #ffe3e3;
+  --color-dark--0: #242a2e;
+  --color-dark--1: #2d3439;
+  --color-dark--2: #42484d;
+  --color-light--1: #aaa;
+  --color-light--2: #ececec;
+  --color-light--3: #d6dee0;
+
+  /* Grey */
+  --color-grey-0: #fff;
+  --color-grey-50: #f9fafb;
+  --color-grey-100: #f3f4f6;
+  --color-grey-200: #e5e7eb;
+  --color-grey-300: #d1d5db;
+  --color-grey-400: #9ca3af;
+  --color-grey-500: #6b7280;
+  --color-grey-600: #4b5563;
+  --color-grey-700: #374151;
+  --color-grey-800: #1f2937;
+  --color-grey-900: #111827;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  color: var(--color-light--2);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+label {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  font-family: inherit;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-light--3);
+  transition: all 0.2s;
+}
+
+input:focus {
+  outline: none;
+  background-color: #fff;
+}
+
+.cta:link,
+.cta:visited {
+  display: inline-block;
+  background-color: var(--color-brand--2);
+  color: var(--color-dark--2);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  border-radius: 5px;
+}
+
+.cta:active,
+.cta:hover {
+  /* background-color: var(--color-brand-light--1); */
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  transform: translateY(-1px);
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s;
+}

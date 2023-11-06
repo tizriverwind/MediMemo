@@ -1,0 +1,12 @@
+.logo {
+  height: 5.2rem;
+}
+
+.side {
+  display: flex;
+  align-items: center;
+}
+
+.side p {
+  justify-content: center;
+}

@@ -1,0 +1,45 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.nav a:link,
+.nav a:visited {
+  text-decoration: none;
+  color: var(--color-light--2);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* CSS Modules feature */
+.nav a:global(.active) {
+  color: var(--color-brand--2);
+}
+
+a.ctaLink:link,
+a.ctaLink:visited {
+  background-color: var(--color-brand--2);
+  color: var(--color-dark--2);
+  padding: 0.8rem 2rem;
+  border-radius: 7px;
+}
+
+a.ctaLink:hover,
+a.ctaLink:active {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  transform: translateY(-10px); /* Slight lift effect */
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s; /* Smooth transition for hover effects */
+}
