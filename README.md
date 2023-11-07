@@ -14,7 +14,7 @@ Walkthrough Video:
 
 Slides:
 
-Design Document:
+Design Document: [Click to view the design document](designDocument/Project3-Design-document.pdf)
 
 Class Link: https://johnguerra.co/classes/webDevelopment_fall_2023/
 
