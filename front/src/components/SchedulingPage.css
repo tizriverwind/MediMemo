@@ -1,3 +1,81 @@
+/* .scheduling-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 20px;
+  margin-left: auto;
+  margin-right: auto;
+} */
 .scheduling-container {
-  margin-left: 300px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+.content-wrapper {
+  /* display: flex; */
+  gap: 40px; /* Adjust as necessary */
+  flex-direction: column;
+}
+.success-message {
+  color: green;
+  background-color: #eaffea;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.calendar-container {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically if you have a specific height */
+  margin-bottom: 30px;
+}
+.appointment-display-container {
+  flex: 2; /* Adjust as necessary, or set a fixed width */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+}
+.appointments-sidebar {
+  width: 350px; /* or whatever width you prefer */
+  margin-top: 10px;
+  background: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.appointment-card {
+  background: #ffffff;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.appointment-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.appointment-card p {
+  margin: 0;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* This last-child selector removes the bottom margin from the last <p> element in the card */
+.appointment-card p:last-child {
+  margin-bottom: 0;
+}
+
+.general-text {
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+.welcome-text {
+  font-size: 20px;
+  margin-bottom: 30px;
 }
