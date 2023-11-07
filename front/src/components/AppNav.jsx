@@ -17,7 +17,7 @@ function AppNav() {
         <li>
           <NavLink to="/app/scheduling" className={styles.navlink}>
             <HiOutlineCalendarDays />
-            <span>Patient Records</span>
+            <span>Schedule</span>
           </NavLink>
         </li>
       </ul>
