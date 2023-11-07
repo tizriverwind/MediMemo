@@ -1,3 +1,47 @@
+<<<<<<< Updated upstream:front/src/components/HomePage/HomePage.css
 .home-page-container {
   margin-left: 300px;
+=======
+.scheduling-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+>>>>>>> Stashed changes:front/src/components/SchedulingPage.css
 }
+
+.content-wrapper {
+  /* display: flex; */
+  gap: 40px; /* Adjust as necessary */
+  flex-direction: column;
+}
+.calendar-container {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically if you have a specific height */
+}
+
+.appointment-display-container {
+  flex: 2; /* Adjust as necessary, or set a fixed width */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+}
+
+/* Ensure the AppointmentDisplay component takes the remaining space */
+.appointment-display-container {
+  flex-grow: 1;
+}
+
+.general-text {
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/* Add additional styling for the calendar and appointment display as needed */
+/* .appointment-card {
+  flex: 1 1 calc(33.333% - 20px); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; 
+  padding: 16px; 
+} */

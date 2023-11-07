@@ -1,4 +1,5 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
+
 import "dotenv/config";
 
 function MyMongoDB() {
@@ -53,6 +54,7 @@ function MyMongoDB() {
       await client.close();
     }
   };
+<<<<<<< Updated upstream
 
   //   // Method to delete an appointment from the database
   //   myDB.deleteAppointment = async function (appointmentId) {
@@ -70,6 +72,42 @@ function MyMongoDB() {
   //       await client.close();
   //     }
   //   };
+=======
+  // NEW: USED TO DELETE A APPOINTMENT NOT WORKING
+  myDB.deleteAppointment = async function (appointmentId) {
+    const { client, db } = await connect();
+    try {
+      // Adjust the query as needed for your database
+      return await db
+        .collection("appointments")
+        .deleteOne({ _id: new ObjectId(appointmentId) });
+    } catch (error) {
+      console.error("Error deleting appointment:", error);
+      throw error; // Throw error so that you can send a proper response back in your route
+    } finally {
+      await client.close();
+    }
+  };
+  // END OF NEW: USED TO DELETE A APPOINTMENT
+
+  // NEW: USED TO UPDATE A APPOINTMENT
+  myDB.updateAppointment = async function (appointmentId, appointmentData) {
+    const { client, db } = await connect();
+    try {
+      return await db.collection("appointments").updateOne(
+        { _id: new ObjectId(appointmentId) }, // Make sure to convert to ObjectId
+        { $set: appointmentData }
+      );
+    } catch (error) {
+      console.error("Failed to update appointment:", error);
+      throw error; // Re-throw the error to be handled in the route
+    } finally {
+      await client.close();
+    }
+  };
+
+  // END OF NEW: USED TO UPDATE A APPOINTMENT
+>>>>>>> Stashed changes
   return myDB;
 }
 
