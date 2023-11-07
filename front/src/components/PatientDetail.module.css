@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.header {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.header h2 {
+  flex-grow: 1;
+  font-size: 2.4rem;
+}
+
+.infoContainer {
+  font-size: 1.6rem;
+}
+
+.container h3 {
+  font-size: 2rem;
+}
+
+.visitContainer {
+  display: flex;
+}
+.visitContainer h3 {
+  flex-grow: 1;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.summary p {
+  font-size: 1.2rem;
+}
