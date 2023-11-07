@@ -1,5 +1,5 @@
 // src/components/Modal.jsx
-import React from "react";
+
 import "./Modal.css"; // Import CSS styles for the modal
 import PropTypes from "prop-types";
 const Modal = ({ show, children, onClose }) => {

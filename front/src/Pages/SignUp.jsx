@@ -4,20 +4,51 @@ import Button from "../components/Button";
 import PageNav from "../components/PageNav";
 // import { useAuth } from "../contexts/FakeAuthContext";
 import styles from "./SignUp.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   // PRE-FILL FOR DEV PURPOSES
-  const [email, setEmail] = useState("jack@example.com");
-  const [ID, setID] = useState("123456");
-  const [password, setPassword] = useState("qwerty");
-
+  const [email, setEmail] = useState("");
+  const [ID, setID] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   // const { login, isAuthenticated } = useAuth();
   // const navigate = useNavigate();
+  function resetForm() {
+    setEmail("");
+    setID("");
+    setPassword("");
+  }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    resetForm();
+    console.log("submitted");
+    const formData = {
+      email: email,
+      id: ID,
+      password: password,
+    };
+    console.log(formData);
 
-    // if (email && password) login(email, password);
+    try {
+      const res = await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.status === 201) {
+        alert("You have successfully signed up!");
+        navigate("/login");
+      } else {
+        alert("You have entered the wrong credentials");
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
   }
 
   // useEffect(
@@ -40,6 +71,8 @@ export default function SignUp() {
             id="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
+            placeholder="hla@example.com"
+            required
           />
         </div>
 
@@ -49,7 +82,9 @@ export default function SignUp() {
             type="ID"
             id="ID"
             onChange={(e) => setID(e.target.value)}
+            placeholder="123456"
             value={ID}
+            required
           />
         </div>
 
@@ -60,11 +95,15 @@ export default function SignUp() {
             id="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            placeholder="qwerty"
+            required
           />
         </div>
 
         <div>
-          <Button type="secondary">Sign Up</Button>
+          <Button actionType="submit" type="secondary">
+            Sign Up
+          </Button>
         </div>
       </form>
     </main>

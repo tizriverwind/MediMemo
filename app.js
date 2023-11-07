@@ -6,6 +6,8 @@ import logger from "morgan";
 import { fileURLToPath } from "url";
 import patientRouter from "./routes/patientrecord.js";
 import indexRouter from "./routes/index.js";
+import userRouter from "./routes/userRoutes.js";
+
 // commented out based on class video, but can use for login stuff?
 // import usersRouter from "./routes/users.js";
 
@@ -30,6 +32,7 @@ app.use(express.static(path.join(__dirname, "front/build")));
 
 app.use("/api/appointments", indexRouter);
 app.use("/api/patients", patientRouter);
+app.use("/api/users", userRouter);
 // commented out based on class video,but can use for login stuff?
 // app.use("/users", usersRouter);
 

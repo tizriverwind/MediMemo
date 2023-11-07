@@ -1,9 +1,13 @@
 import styles from "./Button.module.css";
 import PropTypes from "prop-types";
 
-function Button({ onClick, type, children }) {
+function Button({ onClick, type, actionType = "button", children }) {
   return (
-    <button onClick={onClick} className={`${styles.button} ${styles[type]}`}>
+    <button
+      onClick={onClick}
+      type={actionType}
+      className={`${styles.button} ${styles[type]}`}
+    >
       {children}
     </button>
   );
@@ -12,6 +16,7 @@ function Button({ onClick, type, children }) {
 Button.propTypes = {
   onClick: PropTypes.func.isRequired,
   type: PropTypes.oneOf(["primary", "secondary", "patientB"]),
+  actionType: PropTypes.oneOf(["button", "submit", "reset"]),
   children: PropTypes.node,
 };
 
