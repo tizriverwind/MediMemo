@@ -33,8 +33,8 @@ export default function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="app" element={<AppLayout />}>
           <Route path="patient-records" element={<PatientRecords />} />
-          <Route path="scheduling" element={<Schedule />} />
         </Route>
+        <Route path="app/scheduling" element={<Schedule />} />
         <Route path="*" element={<PageNotFound />} />
         {/* ... Other routes ... */}
       </Routes>

@@ -5,6 +5,7 @@ import Button from "./Button";
 import TableHeader from "./TableHeader";
 import PatientRow from "./PatientRow";
 import PatientDetail from "./PatientDetail";
+import Modal from "./Modal";
 
 const data = [
   {
@@ -104,6 +105,27 @@ export default function PatientRecords() {
   const [query, setQuery] = useState("");
   const [patientId, setpatientId] = useState(null);
   const [patients, setPatients] = useState(data);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    id: "",
+    first_name: "",
+    last_name: "",
+    email: "",
+    gender: "",
+    date_of_birth: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  function handleSubmit() {
+    console.log("Submitted");
+  }
 
   function closeModal() {
     setpatientId(null);
@@ -114,9 +136,69 @@ export default function PatientRecords() {
     setpatientId((patientId) => (id === patientId ? null : id));
   }
 
-  // ...component logic
+  function onSetIsModalOpen() {
+    setIsModalOpen(() => !isModalOpen);
+  }
+
   return (
     <div className={styles.container}>
+      {
+        <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          {/* collecting data here */}
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="first_name"
+              value={formData.first_name}
+              onChange={handleChange}
+              placeholder="First Name"
+              required
+            />
+            <input
+              type="text"
+              name="last_name"
+              value={formData.last_name}
+              onChange={handleChange}
+              placeholder="Last Name"
+              required
+            />
+            <input
+              type="text"
+              name="date_of_birth"
+              value={formData.date_of_birth}
+              onChange={handleChange}
+              placeholder="12/13/1998"
+              required
+            />
+            <input
+              type="id"
+              name="id"
+              value={formData.id}
+              onChange={handleChange}
+              placeholder="12"
+              required
+            />
+
+            <input
+              type="text"
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              placeholder="Male/Female/.."
+              required
+            />
+            <input
+              type="text"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email"
+              required
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </Modal>
+      }
       {patientId ? (
         <PatientDetail
           closeModal={closeModal}
@@ -128,7 +210,7 @@ export default function PatientRecords() {
           <h2>All Patients Records</h2>
           <div className={styles.patientNav}>
             <Search query={query} setQuery={setQuery} />
-            <Button onClick={setQuery} type="patientB">
+            <Button onClick={onSetIsModalOpen} type="patientB">
               Add New Patient
             </Button>
           </div>
