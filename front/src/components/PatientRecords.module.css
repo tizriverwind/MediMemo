@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+.patientNav {
+  display: flex;
+  gap: 2.4rem;
+}

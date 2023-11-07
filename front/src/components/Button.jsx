@@ -11,7 +11,7 @@ function Button({ onClick, type, children }) {
 
 Button.propTypes = {
   onClick: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(["primary", "secondary"]),
+  type: PropTypes.oneOf(["primary", "secondary", "patientB"]),
   children: PropTypes.node,
 };
 
