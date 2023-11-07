@@ -1,20 +1,54 @@
 import styles from "./PatientDetail.module.css";
+import PropTypes from "prop-types";
 
 import Button from "./Button";
-function PatientDetail({ patients, patientId, closeModal, addNewVisit }) {
+function PatientDetail({
+  patients,
+  patientId,
+  closeModal,
+  onPrefilledModalOpen,
+  setpatientId,
+  setPatients,
+}) {
   const patient = patients.find((p) => p.id === patientId);
   const name = patient.first_name + " " + patient.last_name;
+  function onAddNewVisit() {
+    console.log("New Visit Added!");
+  }
+
+  async function handleDelete(e) {
+    e.preventDefault();
+    try {
+      const res = await fetch("/api/patients", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(patient),
+      });
+      if (res.status === 204) {
+        alert("The request has been deleted");
+        setpatientId(null);
+        setPatients(patients.filter((p) => p.id !== patientId));
+      } else {
+        alert("Failed to delete!");
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2>Patient's Details</h2>
+        <h2>Patient&apos;s Details</h2>
         <Button onClick={closeModal} type="patientB">
           Back to all patients
         </Button>
       </div>
       <div className={styles.header}>
         <h2>{name}</h2>
-        <Button onClick={closeModal} type="patientB">
+        <Button onClick={handleDelete} type="patientB">
+          Delete
+        </Button>
+        <Button onClick={onPrefilledModalOpen} type="patientB">
           Update
         </Button>
       </div>
@@ -29,7 +63,7 @@ function PatientDetail({ patients, patientId, closeModal, addNewVisit }) {
       <div className={styles.summary}>
         <div className={styles.visitContainer}>
           <h3>Visit Summaries</h3>
-          <Button onClick={addNewVisit} type="patientB">
+          <Button onClick={onAddNewVisit} type="patientB">
             Add new visit
           </Button>
         </div>
@@ -49,5 +83,12 @@ function PatientDetail({ patients, patientId, closeModal, addNewVisit }) {
     </div>
   );
 }
-
+PatientDetail.propTypes = {
+  patients: PropTypes.array.isRequired,
+  patientId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  closeModal: PropTypes.func.isRequired,
+  onPrefilledModalOpen: PropTypes.func.isRequired,
+  setpatientId: PropTypes.func.isRequired,
+  setPatients: PropTypes.func.isRequired,
+};
 export default PatientDetail;

@@ -6,7 +6,10 @@ export default function Search({ query, setQuery }) {
       type="text"
       placeholder="Search Patients by Name"
       value={query}
-      onChange={(e) => setQuery(e.target.value)}
+      onChange={(e) => {
+        setQuery(e.target.value);
+        // filterPatients(patients);
+      }}
     />
   );
 }
