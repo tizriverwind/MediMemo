@@ -26,6 +26,10 @@ Medimemo is an online platform designed for healthcare providers to optimize the
 
 All data in this project is fictitious and for educational and demonstration purposes only. It does not represent real healthcare records or individuals. Please use responsibly and ethically.
 
+## Notes
+
+Please refresh page to see added new appointments and updates on appointment cards on schedualing appointments page
+
 ## Functionalities
 
 - Landing Page:
