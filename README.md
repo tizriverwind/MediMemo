@@ -58,7 +58,7 @@ Please refresh page to see added new appointments and updates on appointment car
 
 1. CREATE
    - Whenever a user clicks on "Add new patient" button (on the top right), user is able to create a new patient.
-   - Log-in/Sign-up creates users. Added to **\*\***\_\_**\*\*** collections in database
+   - Log-in/Sign-up creates users. Added to users collections in database
 2. READ
    - On the patient page, all the data shown is fetched from collection named "patients" in database.
 3. UPDATE
@@ -98,6 +98,12 @@ We have a collection of 1k health records in our database (meets project rubric 
 6. MongoDB
 
 ## Screenshots
+
+Welcome Page:
+
+Log-in Page:
+
+Sign-UP Page:
 
 ### Patient Pages
 
