@@ -26,22 +26,18 @@ Medimemo is an online platform designed for healthcare providers to optimize the
 
 All data in this project is fictitious and for educational and demonstration purposes only. It does not represent real healthcare records or individuals. Please use responsibly and ethically.
 
-## Notes
-
-Please refresh page to see added new appointments and updates on appointment cards on schedualing appointments page
-
 ## Functionalities/How to use
 
 - Landing Page:
   - Welcomes user to application and gives option to login or sign up
 - Create an account:
-  - user is able to sign up and user credentials to sign back in.
+  - User is able to sign up and user credentials to sign back in.
 - Patient Page:
   - Lets a user CREATE/add a new patient and create a new health record for the patient
   - Search bar lets you filter through all patients to find specific patient
   - Clicking on a patient takes you to their health record
   - In health record, user is able to UPDATE and DELETE a health record
-- Schedual Page:
+- Schedule Page:
   - Lets a user create/add a new appointment by clicking a date on the calander and filling out a form
   - Search bar lets you filter through all appointments
     - you can filter by typing the following details:
@@ -73,7 +69,7 @@ We have a collection of 1k health records in our database (meets project rubric 
 1. CREATE
    - Whenever a user click on a date on the calander a form pops up for new appointment details. When submitted, a new appointment is craeted and added to "appointment" collection in data base.
 2. READ
-   - On the schedualing page, all the data shown is fetched from collection named "appointments" in database.
+   - On the scheduling page, all the data shown is fetched from collection named "appointments" in database.
 3. UPDATE
    - The "update" button (found on each appointment card) lets you update the appointment details. The update also updates the appointment collection in database.
 4. DELETE
@@ -122,9 +118,9 @@ Patient Record Page:
 Search Patient Feature Example:
 <img width="1196" alt="P-SearchingFeatureExample" src="https://github.com/hlahtoo/MediMemo/assets/88179209/857cc9ed-2dab-41ad-84e1-4afa22cbb8bf">
 
-### Schedualing Page
+### Scheduling Page
 
-Main Schedualing Page:
+Main Scheduling Page:
 <img width="1433" alt="S-GeneralPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/ee010e3d-d11a-476c-9940-322521c5c3b6">
 
 Create Appointment Form:
