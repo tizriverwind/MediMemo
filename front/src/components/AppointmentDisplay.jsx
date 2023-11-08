@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import PropTypes from "prop-types";
 import "./AppointmentDisplay.css";
 
 const AppointmentDisplay = ({ onEdit }) => {
@@ -11,8 +11,8 @@ const AppointmentDisplay = ({ onEdit }) => {
       try {
         const response = await fetch("/api/appointments");
         const result = await response.json();
-        console.log("Fetched data:", result.data.appts); // TESTING
-        // this is what was causing errors
+        console.log("Fetched data:", result.data.appts);
+
         if (Array.isArray(result.data.appts)) {
           const formattedAppointments = result.data.appts.map(
             (appointment) => ({
@@ -81,7 +81,7 @@ const AppointmentDisplay = ({ onEdit }) => {
         />
       </div>
       <p className="appointment-subheading-text">Scheduled Appointments</p>
-      {/* <SearchBar query={query} setQuery={setQuery} /> */}
+
       <div className="row">
         {appointmentsData
           .filter((appointment) => {
@@ -90,7 +90,6 @@ const AppointmentDisplay = ({ onEdit }) => {
               appointment.patient_name.toLowerCase().includes(query) ||
               appointment.doctor_name.toLowerCase().includes(query) ||
               appointment.why.toLowerCase().includes(query)
-              // Add more fields to search by if necessary
             );
           })
           .map((appointment, index) => (
@@ -135,7 +134,10 @@ const AppointmentDisplay = ({ onEdit }) => {
       </div>
     </div>
   );
-  // end of wokring on delete an appointment
+};
+
+AppointmentDisplay.propTypes = {
+  onEdit: PropTypes.func.isRequired,
 };
 
 export default AppointmentDisplay;

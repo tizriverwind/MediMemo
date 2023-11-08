@@ -39,8 +39,7 @@ function MyMongoDB() {
     const { client, db } = await connect();
     try {
       patientdata.visit = [];
-      // const numberID = Number(patientdata.id);
-      // patientdata.id = numberID;
+
       const patient = await db.collection("patients").insertOne(patientdata);
       console.log("Inserted appointment:", patient); // Log the inserted appointment to see if it works
       return patient;

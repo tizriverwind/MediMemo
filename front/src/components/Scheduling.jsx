@@ -1,10 +1,10 @@
 import "./SchedulingPage.css";
-// import React, { useState } from "react";
-import React, { useState, useEffect } from "react";
+
+import { useState } from "react";
 
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"; // this imports the default styling
-import Modal from "./Modal"; // Make sure the path to your modal component is correct
+import Modal from "./Modal";
 import AppointmentDisplay from "./AppointmentDisplay";
 import AppointmentForm from "./AppointmentForm";
 
@@ -185,7 +185,6 @@ const Scheduling = () => {
           </form>
         )}
       </Modal>
-      {/* <AppointmentsSidebar /> */}
     </div>
   );
 };
