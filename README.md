@@ -96,7 +96,9 @@ We have a collection of 1k health records in our database (meets project rubric 
 ## Screenshots
 
 Logo:
+
 <img width="156" alt="Screenshot 2023-11-08 at 8 50 40 AM" src="https://github.com/hlahtoo/MediMemo/assets/88179209/39089d36-3c9e-4c51-b5e9-8f47226e70e3">
+
 
 Welcome Page:
 <img width="1206" alt="welcomePage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/3c461aa9-c59b-4865-bf9d-6eab9ec775b5">
