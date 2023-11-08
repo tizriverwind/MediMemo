@@ -30,7 +30,7 @@ All data in this project is fictitious and for educational and demonstration pur
 
 Please refresh page to see added new appointments and updates on appointment cards on schedualing appointments page
 
-## Functionalities
+## Functionalities/How to use
 
 - Landing Page:
   - Welcomes user to application and gives option to login or sign up
@@ -82,10 +82,11 @@ We have a collection of 1k health records in our database (meets project rubric 
 ## How to Install
 
 1. Clone repository
-2.
+2. cd to the cloned folder
 3. npm install
-4.
-5.
+4. cd front => npm install => npm run build
+5. cd .. => npm start
+6. go to localhost:3000
 
 ## Technologies Used
 
