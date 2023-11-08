@@ -21,6 +21,7 @@ const Scheduling = () => {
 
   const onDateChange = (nextValue) => {
     // Open modal or any other logic
+    console.log(successMessage);
     console.log(nextValue); //  just log the date now, wokring on clader function later
     setValue(nextValue);
     setIsModalOpen(true); // Open the modal
