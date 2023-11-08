@@ -23,7 +23,6 @@ const Sidebar = () => {
       >
         Sign Out
       </Button>
-      {/* ... Other links ... */}
     </div>
   );
 };

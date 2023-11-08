@@ -1,19 +1,15 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import PageNav from "../components/PageNav";
-// import { useAuth } from "../contexts/FakeAuthContext";
 import styles from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
-  // PRE-FILL FOR DEV PURPOSES
   const [email, setEmail] = useState("");
   const [ID, setID] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  // const { login, isAuthenticated } = useAuth();
-  // const navigate = useNavigate();
+
   function resetForm() {
     setEmail("");
     setID("");
@@ -50,14 +46,6 @@ export default function SignUp() {
       console.log(err.message);
     }
   }
-
-  // useEffect(
-  //   function () {
-  //     // if (isAuthenticated)
-  //     navigate("/app", { replace: true });
-  //   },
-  //   [isAuthenticated, navigate]
-  // );
 
   return (
     <main className={styles.login}>

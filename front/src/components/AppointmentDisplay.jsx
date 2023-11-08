@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from "react";
-// import PropTypes from "prop-types";
-import "./AppointmentDisplay.css";
-// import SearchBar from "../searchBar/SearchBar";
-// import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-// ({ appointments }) =>
+import "./AppointmentDisplay.css";
+
 const AppointmentDisplay = ({ onEdit }) => {
   const [appointmentsData, setAppointmentsData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
-  // const [editingAppointment, setEditingAppointment] = useState(null);
-
-  //   const [query, setQuery] = useState("");
-  //   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {

@@ -14,7 +14,7 @@ function Button({ onClick, type, actionType = "button", children }) {
 }
 
 Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   type: PropTypes.oneOf(["primary", "secondary", "patientB"]),
   actionType: PropTypes.oneOf(["button", "submit", "reset"]),
   children: PropTypes.node,

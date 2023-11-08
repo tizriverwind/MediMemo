@@ -8,7 +8,6 @@ export default function Search({ query, setQuery }) {
       value={query}
       onChange={(e) => {
         setQuery(e.target.value);
-        // filterPatients(patients);
       }}
     />
   );

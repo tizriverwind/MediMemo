@@ -157,7 +157,6 @@ export default function PatientRecords() {
     <div className={styles.container}>
       {
         <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          {/* collecting data here */}
           <form onSubmit={handleSubmit}>
             <input
               type="text"

@@ -5,7 +5,6 @@ import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  // PRE-FILL FOR DEV PURPOSES
   const [email, setEmail] = useState("");
   const [ID, setID] = useState("");
   const [password, setPassword] = useState("");
@@ -59,6 +58,8 @@ export default function Login() {
             id="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
+            placeholder="hh@example.com"
+            required
           />
         </div>
 
@@ -69,6 +70,8 @@ export default function Login() {
             id="ID"
             onChange={(e) => setID(e.target.value)}
             value={ID}
+            placeholder="123134"
+            required
           />
         </div>
 
@@ -79,6 +82,8 @@ export default function Login() {
             id="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            placeholder="qwerty"
+            required
           />
         </div>
 

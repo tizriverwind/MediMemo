@@ -22,17 +22,6 @@ function AppNav() {
         </li>
       </ul>
     </nav>
-    // <div>
-    //   <Link to="/" className="sidebar-link">
-    //     Home
-    //   </Link>{" "}
-    //   {/* Add this line */}
-    //   <Link to="/patient-records" className="sidebar-link">
-    //     Patient Records
-    //   </Link>
-    //   <Link to="/scheduling" className="sidebar-link">
-    //     Scheduling
-    //   </Link>
   );
 }
 

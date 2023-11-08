@@ -1,4 +1,3 @@
-// src/components/WelcomeMessage.jsx
 import "./WelcomeMessage.css"; // Assuming you have a separate CSS file for this component
 
 const WelcomeMessage = () => {

@@ -33,7 +33,6 @@
 .card:hover {
   box-shadow: 0 8px 16px rgba(237, 6, 6, 0.2);
   background-color: #703b3f; /* A light red background color */
-  /* #f8d7da */
 }
 
 .card-body {

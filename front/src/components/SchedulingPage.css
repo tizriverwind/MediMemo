@@ -1,19 +1,9 @@
-/* .scheduling-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
-  gap: 20px;
-  margin-left: auto;
-  margin-right: auto;
-} */
 .scheduling-container {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
 }
 .content-wrapper {
-  /* display: flex; */
   gap: 40px; /* Adjust as necessary */
   flex-direction: column;
 }
