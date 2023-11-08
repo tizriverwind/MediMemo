@@ -100,27 +100,38 @@ We have a collection of 1k health records in our database (meets project rubric 
 ## Screenshots
 
 Welcome Page:
+<img width="1206" alt="welcomePage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/3c461aa9-c59b-4865-bf9d-6eab9ec775b5">
 
 Log-in Page:
+<img width="1210" alt="log-inPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/da99df4a-140d-43c6-85bc-617b3e54433b">
 
 Sign-UP Page:
+<img width="1202" alt="sign-upPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/663d863a-e712-4821-ba50-d168b5dc798b">
 
 ### Patient Pages
 
 Main Patient Page:
+<img width="1195" alt="P-GeneralPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/17e6e232-7c96-472a-92cc-95bee7d86bf7">
 
 Adding New Patient Feature:
+<img width="1194" alt="P-AddNewPatientForm" src="https://github.com/hlahtoo/MediMemo/assets/88179209/031d6ce0-d026-4c50-b0ac-96b031acd191">
 
 Patient Record Page:
+<img width="1190" alt="P-PatientRecordPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/4a2da040-77f1-41ae-b796-bfde8ac2d066">
 
 Search Patient Feature Example:
+<img width="1196" alt="P-SearchingFeatureExample" src="https://github.com/hlahtoo/MediMemo/assets/88179209/857cc9ed-2dab-41ad-84e1-4afa22cbb8bf">
 
 ### Schedualing Page
 
 Main Schedualing Page:
+<img width="1433" alt="S-GeneralPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/ee010e3d-d11a-476c-9940-322521c5c3b6">
 
 Create Appointment Form:
+<img width="1425" alt="S-CreateAppointmentForm" src="https://github.com/hlahtoo/MediMemo/assets/88179209/53fc67a4-6fdc-4bbd-81b4-73dca6dfe2cc">
 
 Update Appointment Form Feature:
+<img width="1423" alt="S-UpdateFormExample" src="https://github.com/hlahtoo/MediMemo/assets/88179209/b8e8fc3e-93a9-489c-aee7-4186bbad54fc">
 
 Search Appointment Feature Example:
+<img width="1422" alt="S-SearchingFeature" src="https://github.com/hlahtoo/MediMemo/assets/88179209/c95a7a6a-3ddb-4e48-a520-85c240ee87e9">
