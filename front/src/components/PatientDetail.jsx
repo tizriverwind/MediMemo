@@ -67,7 +67,7 @@ function PatientDetail({
             Add new visit
           </Button>
         </div>
-        {patient.visit.length === 0
+        {patient.visit === undefined || patient.visit.length === 0
           ? "No visists"
           : patient.visit?.map((v) => (
               <div key={v.date}>
