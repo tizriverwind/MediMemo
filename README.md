@@ -8,7 +8,7 @@ Hla Htoo and Vicki Diaz
 
 Please refer the links below for more details on the design
 
-Deployed Site:
+Deployed Site: https://medimemo.onrender.com/
 
 Walkthrough Video: https://youtu.be/U_mODY9ivF0
 
