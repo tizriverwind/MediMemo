@@ -10,7 +10,7 @@ Please refer the links below for more details on the design
 
 Deployed Site:
 
-Walkthrough Video:
+Walkthrough Video: https://youtu.be/U_mODY9ivF0
 
 Slides: https://docs.google.com/presentation/d/13-1o0IpWsq3YYmtJ48PFvMDYHdt9lrsDxW3CcCHUO5g/edit#slide=id.p
 
