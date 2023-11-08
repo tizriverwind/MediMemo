@@ -44,6 +44,36 @@ function MyMongoDB() {
     }
   };
 
+  myDB.authenticateUsers = async (account) => {
+    const { client, db } = await connect();
+    try {
+      console.log("connected to MongoDB");
+      if (!account.email || !account.password) {
+        throw new Error("Both email and password fields are required");
+      }
+      console.log(account);
+      const verifiedUser = await db.collection("doctoraccounts").findOne({
+        email: account.email,
+      });
+      console.log(verifiedUser);
+      if (
+        verifiedUser &&
+        (await bcrypt.compare(account.password, verifiedUser.password))
+      ) {
+        console.log("Authentication Successful");
+        return true;
+      } else {
+        console.log("Authentication Failed");
+        return false;
+      }
+    } catch (err) {
+      console.log(err.message);
+      return false;
+    } finally {
+      await client.close();
+    }
+  };
+
   return myDB;
 }
 

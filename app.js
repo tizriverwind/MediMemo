@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // changed from "public" to "front", "dist"
 // vite is going to take the react code and covert it into code that can be served into as standard html
-app.use(express.static(path.join(__dirname, "front/build")));
+app.use(express.static(path.join(__dirname, "front", "dist")));
 
 app.use("/api/appointments", indexRouter);
 app.use("/api/patients", patientRouter);
