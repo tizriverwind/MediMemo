@@ -1,6 +1,6 @@
 import "./SchedulingPage.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"; // this imports the default styling
@@ -19,6 +19,39 @@ const Scheduling = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [appointmentsData, setAppointmentsData] = useState([]);
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("/api/appointments");
+        const result = await response.json();
+        console.log("Fetched data:", result.data.appts);
+
+        if (Array.isArray(result.data.appts)) {
+          const formattedAppointments = result.data.appts.map(
+            (appointment) => ({
+              _id: appointment._id,
+              patient_name: appointment.patient_name,
+              doctor_name: appointment.doctor_name,
+              date: appointment.date,
+              time: appointment.time,
+              why: appointment.why,
+              patient_phone: appointment.patient_phone,
+            })
+          );
+          setAppointmentsData(formattedAppointments);
+        } else {
+          // Handle the case where result.data.appts is not an array
+          console.error(
+            "result.data.appts is not an array:",
+            result.data.appts
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching appointments:", error);
+      }
+    }
+    fetchData();
+  }, []);
   const onDateChange = (nextValue) => {
     // Open modal or any other logic
     console.log(successMessage);
@@ -62,12 +95,10 @@ const Scheduling = () => {
   // this is used for creating an appointment
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted"); //TESTING
+    console.log("Form submitted");
     // Prevents the default form submission behavior, which is to reload the page,
     // allowing us to handle the submission process manually with JavaScript for a
     // smoother user experience without a page refresh.
-
-    // remeber to come back and call API to save the data to the database
     try {
       const response = await fetch("/api/appointments", {
         method: "POST",
@@ -80,10 +111,15 @@ const Scheduling = () => {
       if (response.ok) {
         // Handle successful submission here
         console.log("Setting success message"); // TESTING
-        const newAppointment = await response.json(); // Make sure the server sends back the new appointment data
+        const result = await response.json();
+
         setSuccessMessage("Appointment scheduled successfully!");
+
         setIsModalOpen(false); // Close the modal after submission
-        // setAppointmentsData([...appointmentsData, newAppointment]); COMEBACK TO FIX THIS
+        const newAppt = formData;
+        newAppt._id = result.data.appointment.insertedId;
+
+        setAppointmentsData([...appointmentsData, newAppt]);
       } else {
         // Handle errors here
         console.error("Error submitting form:", response.statusText);
@@ -110,10 +146,28 @@ const Scheduling = () => {
         },
         body: JSON.stringify(formData),
       });
-
-      // Handle the response appropriately...
-      setIsModalOpen(false);
-      setEditingAppointment(null);
+      if (response.ok) {
+        // Handle the response appropriately...
+        setIsModalOpen(false);
+        setEditingAppointment(null);
+        const filteredAppointments = appointmentsData.filter(
+          (a) => a._id !== editingAppointment._id
+        );
+        const updatedAppointment = formData;
+        updatedAppointment._id = editingAppointment._id;
+        setAppointmentsData([updatedAppointment, ...filteredAppointments]);
+      } else {
+        if (response.status === 404) {
+          // 404 Not Found error
+          console.error("The resource was not found.");
+        } else if (response.status === 400) {
+          // Handle a 400 Bad Request error
+          console.error("The request is invalid.");
+        } else if (!response.ok) {
+          // Handle other network errors (e.g., 500 Internal Server Error, timeout)
+          console.error("Network error while saving the appointment.");
+        }
+      }
       // You might need to fetch the updated list of appointments here or update the state
     } catch (error) {
       console.error("Error saving the appointment:", error);
@@ -130,10 +184,13 @@ const Scheduling = () => {
         <div className="calendar-container">
           <Calendar onChange={onDateChange} value={value} />
         </div>
-        <AppointmentDisplay onEdit={handleOpenUpdateForm} />
+        <AppointmentDisplay
+          setAppointmentsData={setAppointmentsData}
+          appointmentsData={appointmentsData}
+          onEdit={handleOpenUpdateForm}
+        />
       </div>
       <Modal show={isModalOpen} onClose={handleCloseModal}>
-        {/* Conditional rendering of AppointmentForm */}
         {editingAppointment ? (
           <AppointmentForm
             appointment={editingAppointment}

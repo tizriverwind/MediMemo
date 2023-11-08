@@ -1,45 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import "./AppointmentDisplay.css";
 
-const AppointmentDisplay = ({ onEdit }) => {
-  const [appointmentsData, setAppointmentsData] = useState([]);
+const AppointmentDisplay = ({
+  setAppointmentsData,
+  appointmentsData,
+  onEdit,
+}) => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch("/api/appointments");
-        const result = await response.json();
-        console.log("Fetched data:", result.data.appts);
-
-        if (Array.isArray(result.data.appts)) {
-          const formattedAppointments = result.data.appts.map(
-            (appointment) => ({
-              _id: appointment._id,
-              patient_name: appointment.patient_name,
-              doctor_name: appointment.doctor_name,
-              date: appointment.date,
-              time: appointment.time,
-              why: appointment.why,
-              patient_phone: appointment.patient_phone,
-            })
-          );
-          setAppointmentsData(formattedAppointments);
-        } else {
-          // Handle the case where result.data.appts is not an array
-          console.error(
-            "result.data.appts is not an array:",
-            result.data.appts
-          );
-        }
-      } catch (error) {
-        console.error("Error fetching appointments:", error);
-      }
-    }
-    fetchData();
-  }, []);
-  // wokring on delete an appointment__________________________________NOT WORKING
   // DELETEING FUNCTION
   const handleDelete = async (appointmentId) => {
     console.log("Attempting to delete appointment with ID:", appointmentId); //TESTING
@@ -138,6 +107,8 @@ const AppointmentDisplay = ({ onEdit }) => {
 
 AppointmentDisplay.propTypes = {
   onEdit: PropTypes.func.isRequired,
+  appointmentsData: PropTypes.array,
+  setAppointmentsData: PropTypes.func,
 };
 
 export default AppointmentDisplay;

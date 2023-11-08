@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const AppointmentForm = ({ appointment, onSave, onClose }) => {
   const [formData, setFormData] = useState({
@@ -90,6 +91,12 @@ const AppointmentForm = ({ appointment, onSave, onClose }) => {
       </button>
     </form>
   );
+};
+
+AppointmentForm.propTypes = {
+  appointment: PropTypes.object,
+  onSave: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
 export default AppointmentForm;

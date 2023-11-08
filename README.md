@@ -12,15 +12,15 @@ Deployed Site:
 
 Walkthrough Video:
 
-Slides:
+Slides: https://docs.google.com/presentation/d/13-1o0IpWsq3YYmtJ48PFvMDYHdt9lrsDxW3CcCHUO5g/edit#slide=id.p
 
-Design Document: [Click to view the design document](designDocument/Project3-Design-document.pdf)
+Design Document: [Click to view the design document](MediMemo/designDocument/Project-3-design-document.pdf)
 
 Class Link: https://johnguerra.co/classes/webDevelopment_fall_2023/
 
 ## Project Objective
 
-Medimemo is an online platform designed for healthcare providers to optimize the management of electronic health records, appointment scheduling, and patient billing. This platform ensures secure storage of health records, facilitates effortless scheduling, and significantly reduces the time spent on billing tasks, enhancing overall efficiency in healthcare management.
+Medimemo is an online platform designed for healthcare providers to optimize the management of electronic health records and appointment scheduling. This platform ensures secure storage of health records and facilitates effortless scheduling, enhancing overall efficiency in healthcare management. This platform makes it easy to search and filter through a large database of patients and appointments.
 
 ## Disclaimer
 
