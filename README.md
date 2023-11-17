@@ -4,6 +4,9 @@
 
 Hla Htoo and Vicki Diaz
 
+## Submission 
+- turned in on-time for first set deadline by professor
+- Date Turned In: 11/8/23
 ## Project Links
 
 Please refer the links below for more details on the design
