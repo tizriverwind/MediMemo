@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import styles from "./AppLayout.module.css";
@@ -10,7 +11,7 @@ function AppLayout() {
       <Sidebar />
       <div className={styles.dashboard}>
         <div className={styles.container}>
-          <PatientRecords />
+          <Outlet />
         </div>
       </div>
     </div>

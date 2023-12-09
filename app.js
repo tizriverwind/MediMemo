@@ -19,11 +19,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
-
-app.use(express.static(path.join(__dirname, "front", "dist")));
-
 app.use("/api/appointments", indexRouter);
 app.use("/api/patients", patientRouter);
 app.use("/api/users", userRouter);
+app.use(express.static(path.join(__dirname, "front", "dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "front", "dist", "index.html"));
+});
 
 export default app;
