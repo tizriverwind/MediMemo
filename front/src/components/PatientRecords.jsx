@@ -174,62 +174,84 @@ export default function PatientRecords() {
     <div className={styles.container}>
       {
         <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="first_name"
-              value={formData.first_name}
-              onChange={handleChange}
-              placeholder="First Name"
-              required
-            />
-            <input
-              type="text"
-              name="last_name"
-              value={formData.last_name}
-              onChange={handleChange}
-              placeholder="Last Name"
-              required
-            />
-            {!patientId && (
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.row}>
+              <label htmlFor="First Name">First Name</label>
               <input
                 type="text"
-                name="date_of_birth"
-                value={formData.date_of_birth}
+                name="first_name"
+                value={formData.first_name}
                 onChange={handleChange}
-                placeholder="12/13/1998"
+                placeholder="First Name"
                 required
               />
+            </div>
+            <div className={styles.row}>
+              <label htmlFor="last_name">Last Name</label>
+              <input
+                type="text"
+                name="last_name"
+                value={formData.last_name}
+                onChange={handleChange}
+                placeholder="Last Name"
+                required
+              />
+            </div>
+            {!patientId && (
+              <div className={styles.row}>
+                <label htmlFor="date_of_birth">Date of Birth</label>
+                <input
+                  type="text"
+                  name="date_of_birth"
+                  value={formData.date_of_birth}
+                  onChange={handleChange}
+                  placeholder="12/13/1998"
+                  required
+                />
+              </div>
             )}
-            <input
-              type="id"
-              name="id"
-              value={formData.id}
-              onChange={handleChange}
-              placeholder="12"
-              required
-            />
-
-            <input
-              type="text"
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              placeholder="Male/Female/.."
-              required
-            />
-            <input
-              type="text"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-              required
-            />
+            <div className={styles.row}>
+              <label htmlFor="id">ID</label>
+              <input
+                type="id"
+                name="id"
+                value={formData.id}
+                onChange={handleChange}
+                placeholder="12"
+                required
+              />
+            </div>
+            <div className={styles.row}>
+              <label htmlFor="First Name">Gender</label>
+              <input
+                type="text"
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                placeholder="Male/Female/.."
+                required
+              />
+            </div>
+            <div className={styles.row}>
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Email"
+                required
+              />
+            </div>
             {patientId ? (
-              <button type="submit">Update</button>
+              <Button actionType="submit" type="secondary">
+                Update
+              </Button>
             ) : (
-              <button type="update">Add</button>
+              // <button type="update">Add</button>
+              <Button actionType="submit" type="secondary">
+                Add
+              </Button>
             )}
           </form>
         </Modal>

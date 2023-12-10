@@ -12,8 +12,8 @@
 }
 
 .modal-content {
-  background: white;
-  padding: 20px;
+  background-color: var(--color-dark--2);
+  padding: 2rem;
   border-radius: 5px;
   position: relative; /* So the close button can be positioned absolutely within */
   z-index: 1001; /* Above the overlay */
