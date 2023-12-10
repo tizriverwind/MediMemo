@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import "dotenv/config";
 
 function MyMongoDB() {
@@ -54,7 +54,7 @@ function MyMongoDB() {
   myDB.updatePatient = async function (request) {
     const { client, db } = await connect();
     try {
-      const filter = { id: request.id };
+      const filter = { _id: new ObjectId(request._id) };
 
       const update = {
         $set: {
@@ -71,12 +71,13 @@ function MyMongoDB() {
       const result = await db
         .collection("patients")
         .findOneAndUpdate(filter, update, options);
-      if (!result.value) {
+      console.log(result);
+      if (!result) {
         console.log("No document was found and updated");
         return null; // Return null or some indicator that no document was updated
       } else {
         console.log("Document was updated successfully");
-        return result.value; // Return the updated document
+        return result;
       }
     } catch (error) {
       console.error("Error updating patient data:", error);

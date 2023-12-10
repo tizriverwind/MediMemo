@@ -1,4 +1,5 @@
 import styles from "./PatientRecords.module.css";
+import { toast } from "react-toastify";
 import { useCallback, useEffect, useState } from "react";
 import Search from "./Search";
 import Button from "./Button";
@@ -55,11 +56,20 @@ export default function PatientRecords() {
           },
           body: JSON.stringify(formData),
         });
+
+        const resJSON = await res.json();
+
         if (res.status === 201) {
-          alert("New Patient Added");
+          // alert("New Patient Added");
+          toast.success("Patient Added Successfully!", {
+            position: toast.POSITION.TOP_RIGHT,
+            theme: "dark",
+          });
+          console.log(resJSON.data.newPatient.insertedId);
+          const newPatient = formData;
+          newPatient._id = resJSON.data.newPatient.insertedId;
+          setPatients((patients) => [...patients, newPatient]);
         }
-        console.log(formData);
-        setPatients((patients) => [...patients, formData]);
       } catch (err) {
         console.log(err.message);
       }
@@ -68,7 +78,7 @@ export default function PatientRecords() {
     } else {
       try {
         const dataToUpdate = formData;
-        dataToUpdate.id = patientId;
+        dataToUpdate._id = patientId;
         console.log(dataToUpdate);
         const res = await fetch("/api/patients", {
           method: "PUT",
@@ -77,17 +87,23 @@ export default function PatientRecords() {
           },
           body: JSON.stringify(dataToUpdate),
         });
-        if (res.status === 201) {
-          alert("Patient has been updated");
+        if (res.status === 200) {
+          toast.success("Patient's detail updated successfully!", {
+            position: toast.POSITION.TOP_RIGHT,
+            theme: "dark",
+          });
         }
 
-        const updatedPatientObject = patients.find((p) => p.id === patientId);
-        const updatedPatientVisits = updatedPatientObject.visit;
-        const updatedPatient = formData;
-        updatedPatient.visit = updatedPatientVisits;
+        const resultJSON = await res.json();
+        console.log(resultJSON.data.updatedPatient);
+
+        // const updatedPatientObject = patients.find((p) => p.id === patientId);
+        // const updatedPatientVisits = updatedPatientObject.visit;
+        // const updatedPatient = formData;
+        // updatedPatient.visit = updatedPatientVisits;
         const filteredPatients = patients.filter((p) => p.id !== patientId);
-        console.log(updatedPatient);
-        setPatients([updatedPatient, ...filteredPatients]);
+        // console.log(updatedPatient);
+        setPatients([resultJSON.data.updatedPatient, ...filteredPatients]);
       } catch (err) {
         console.log(err.message);
       }
@@ -110,7 +126,7 @@ export default function PatientRecords() {
   }
 
   function onPrefilledModalOpen() {
-    const patient = patients.find((p) => p.id === patientId);
+    const patient = patients.find((p) => p._id === patientId);
 
     setFormData({
       id: patient.id,
@@ -145,6 +161,7 @@ export default function PatientRecords() {
       try {
         const res = await fetch("/api/patients");
         const result = await res.json();
+        console.log(result.data.patients);
         setPatients(result.data.patients);
       } catch (err) {
         console.log(err.message);
@@ -246,10 +263,11 @@ export default function PatientRecords() {
             {(query === "" ? patients : searchedPatients).map((patient) => (
               <PatientRow
                 selectPatientId={selectPatientId}
+                patient={patient}
                 first_name={patient.first_name}
                 last_name={patient.last_name}
                 id={patient.id}
-                key={patient.id}
+                key={patient._id}
                 date_of_birth={patient.date_of_birth}
                 gender={patient.gender}
               />

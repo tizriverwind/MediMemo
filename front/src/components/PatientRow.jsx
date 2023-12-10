@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import styles from "./PatientRow.module.css";
 function PatientRow({
   selectPatientId,
+  patient,
   first_name,
   last_name,
   id,
@@ -9,7 +10,10 @@ function PatientRow({
   gender,
 }) {
   return (
-    <div onClick={() => selectPatientId(id)} className={styles.container}>
+    <div
+      onClick={() => selectPatientId(patient._id)}
+      className={styles.container}
+    >
       <div>{id}</div>
       <div>{first_name + " " + last_name}</div>
       <div>{date_of_birth}</div>
@@ -19,6 +23,7 @@ function PatientRow({
 }
 PatientRow.propTypes = {
   selectPatientId: PropTypes.func.isRequired,
+  patient: PropTypes.object.isRequired,
   first_name: PropTypes.string.isRequired,
   last_name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,

@@ -38,12 +38,19 @@ export const postPatientsCon = async (req, res) => {
 export const putPatientsCon = async (req, res) => {
   try {
     const updatedPatient = await myDB.updatePatient(req.body);
-    res.status(200).json({
-      status: "success",
-      data: {
-        updatedPatient,
-      },
-    });
+    if (updatedPatient) {
+      res.status(200).json({
+        status: "success",
+        data: {
+          updatedPatient,
+        },
+      });
+    } else {
+      res.status(500).json({
+        status: "error",
+        message: "Error Updating Patient",
+      });
+    }
   } catch (err) {
     res.status(500).json({
       status: "error",

@@ -1,4 +1,6 @@
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import PatientRecords from "./components/PatientRecords.jsx";
 import Scheduling from "./Pages/Schedule.jsx";
 import HomePage from "./Pages/HomePage.jsx"; // Import the home page component
@@ -40,5 +42,10 @@ const router = createBrowserRouter([
   },
 ]);
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </>
+  );
 }

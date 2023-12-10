@@ -1,4 +1,5 @@
 import styles from "./PatientDetail.module.css";
+import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 
 import Button from "./Button";
@@ -10,7 +11,7 @@ function PatientDetail({
   setpatientId,
   setPatients,
 }) {
-  const patient = patients.find((p) => p.id === patientId);
+  const patient = patients.find((p) => p._id === patientId);
   const name = patient.first_name + " " + patient.last_name;
   function onAddNewVisit() {
     console.log("New Visit Added!");
@@ -25,9 +26,13 @@ function PatientDetail({
         body: JSON.stringify(patient),
       });
       if (res.status === 204) {
-        alert("The request has been deleted");
+        // alert("The request has been deleted");
+        toast.success("Patient Deleted", {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
         setpatientId(null);
-        setPatients(patients.filter((p) => p.id !== patientId));
+        setPatients(patients.filter((p) => p._id !== patientId));
       } else {
         alert("Failed to delete!");
       }

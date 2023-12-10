@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import Button from "../components/Button";
 import PageNav from "../components/PageNav";
 import styles from "./Login.module.css";
@@ -54,10 +55,18 @@ export default function Login() {
       });
       resetForm();
       if (res.status === 200) {
-        alert("You have successfully logged in!");
-        navigate("/app");
+        // alert("You have successfully logged in!");
+        toast.success("You have successfully logged in!", {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
+        navigate("/app/patient-records");
       } else {
-        alert("You have entered the wrong credentials");
+        toast.error("You have entered the wrong credentials!", {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
+        // alert("You have entered the wrong credentials");
       }
     } catch (err) {
       console.log(err.message);
