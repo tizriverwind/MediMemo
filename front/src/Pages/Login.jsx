@@ -3,25 +3,43 @@ import Button from "../components/Button";
 import PageNav from "../components/PageNav";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
+import { HiOutlineMail } from "react-icons/hi";
+import { RiLockPasswordLine } from "react-icons/ri";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { FaRegUser } from "react-icons/fa";
 
 export default function Login() {
   const [email, setEmail] = useState("");
-  const [ID, setID] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
+  const [isActive, setIsActive] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  function changeClick() {
+    setIsActive((cur) => !cur);
+    resetForm();
+  }
+
+  function togglePWVisibility() {
+    setIsVisible((cur) => !cur);
+  }
 
   function resetForm() {
     setEmail("");
-    setID("");
+    setName("");
     setPassword("");
+    setConfirmPassword("");
   }
+
   async function handleSubmit(e) {
     e.preventDefault();
     resetForm();
     console.log("submitted");
     const formData = {
       email: email,
-      id: ID,
+
       password: password,
     };
     console.log(formData);
@@ -47,52 +65,226 @@ export default function Login() {
   }
 
   return (
-    <main className={styles.login}>
+    <main className={styles.container}>
       <PageNav />
+      <section>
+        <div
+          className={`${styles.formcontainer} ${isActive ? styles.active : ""}`}
+        >
+          <div className={styles.forms}>
+            <div className={`${styles.form} ${styles.login}`}>
+              <span className={styles.title}>Login</span>
+              <form className={` ${styles.dummy}`} onSubmit={handleSubmit}>
+                <div className={styles.row}>
+                  <div className={styles.field}>
+                    {/* <label htmlFor="email">Email Address</label> */}
 
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.row}>
-          <label htmlFor="email">Email address</label>
-          <input
-            type="email"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            placeholder="hh@example.com"
-            required
-          />
-        </div>
+                    <input
+                      type="text"
+                      id="email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                      placeholder="Enter Your Email"
+                      required
+                    />
+                    <HiOutlineMail className={styles.icon} />
+                  </div>
+                </div>
 
-        <div className={styles.row}>
-          <label htmlFor="ID">ID</label>
-          <input
-            type="ID"
-            id="ID"
-            onChange={(e) => setID(e.target.value)}
-            value={ID}
-            placeholder="123134"
-            required
-          />
-        </div>
+                {/* <div className={styles.row}>
+                <label htmlFor="ID">ID</label>
+                <input
+                  type="ID"
+                  id="ID"
+                  onChange={(e) => setID(e.target.value)}
+                  value={ID}
+                  placeholder="Enter Your ID"
+                  required
+                />
+              </div> */}
 
-        <div className={styles.row}>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            placeholder="qwerty"
-            required
-          />
-        </div>
+                <div className={styles.row}>
+                  <div className={styles.field}>
+                    {/* <label htmlFor="password">Password</label> */}
 
-        <div>
-          <Button actionType="submit" type="secondary">
-            Login
-          </Button>
+                    <input
+                      type={isVisible ? "text" : "password"}
+                      id="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                      placeholder="Enter Your Password"
+                      required
+                    />
+                    <RiLockPasswordLine className={styles.icon} />
+                    {isVisible ? (
+                      <FaRegEye
+                        className={styles.ricon}
+                        onClick={togglePWVisibility}
+                      />
+                    ) : (
+                      <FaRegEyeSlash
+                        className={styles.ricon}
+                        onClick={togglePWVisibility}
+                      />
+                    )}
+                  </div>
+                </div>
+
+                <div className={styles.checkbox}>
+                  <div className={styles.content}>
+                    <input type="checkbox" id="logCheck" />
+                    <label htmlFor="logCheck" className={styles.cbtext}>
+                      Remember Me
+                    </label>
+                  </div>
+                  <a href="#" className={styles.cbtext}>
+                    Forgot Password?
+                  </a>
+                </div>
+
+                <div>
+                  <Button
+                    className={styles.ctabutton}
+                    actionType="submit"
+                    type="secondary"
+                  >
+                    Login
+                  </Button>
+                </div>
+              </form>
+              <div className={styles.loginSignup}>
+                <span className={styles.cbtext}>Not a member?</span>
+                <a
+                  href="#"
+                  className={`${styles.cbtext} ${styles.signupLink}`}
+                  onClick={changeClick}
+                >
+                  Signup Now
+                </a>
+              </div>
+            </div>
+            <div className={`${styles.form} ${styles.signup}`}>
+              <span className={styles.title}>Registration</span>
+              <form className={` ${styles.dummy}`} onSubmit={handleSubmit}>
+                <div className={styles.row}>
+                  <div className={styles.field}>
+                    {/* <label htmlFor="email">Email Address</label> */}
+
+                    <input
+                      type="text"
+                      id="name"
+                      onChange={(e) => setName(e.target.value)}
+                      value={name}
+                      placeholder="Enter Your Name"
+                      required
+                    />
+                    <FaRegUser className={styles.icon} />
+                  </div>
+                </div>
+                <div className={styles.row}>
+                  <div className={styles.field}>
+                    {/* <label htmlFor="email">Email Address</label> */}
+
+                    <input
+                      type="text"
+                      id="email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                      placeholder="Enter Your Email"
+                      required
+                    />
+                    <HiOutlineMail className={styles.icon} />
+                  </div>
+                </div>
+
+                {/* <div className={styles.row}>
+                <label htmlFor="ID">ID</label>
+                <input
+                  type="ID"
+                  id="ID"
+                  onChange={(e) => setID(e.target.value)}
+                  value={ID}
+                  placeholder="Enter Your ID"
+                  required
+                />
+              </div> */}
+
+                <div className={styles.row}>
+                  <div className={styles.field}>
+                    {/* <label htmlFor="password">Password</label> */}
+
+                    <input
+                      type={isVisible ? "text" : "password"}
+                      id="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                      placeholder="Enter Your Password"
+                      required
+                    />
+                    <RiLockPasswordLine className={styles.icon} />
+                  </div>
+                </div>
+
+                <div className={styles.row}>
+                  <div className={styles.field}>
+                    {/* <label htmlFor="password">Password</label> */}
+
+                    <input
+                      type={isVisible ? "text" : "password"}
+                      id="password"
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      value={confirmPassword}
+                      placeholder="Enter Your Password"
+                      required
+                    />
+                    <RiLockPasswordLine className={styles.icon} />
+                    {isVisible ? (
+                      <FaRegEye
+                        className={styles.ricon}
+                        onClick={togglePWVisibility}
+                      />
+                    ) : (
+                      <FaRegEyeSlash
+                        className={styles.ricon}
+                        onClick={togglePWVisibility}
+                      />
+                    )}
+                  </div>
+                </div>
+
+                <div className={styles.checkbox}>
+                  <div className={styles.content}>
+                    <input type="checkbox" id="logCheck" />
+                    <label htmlFor="logCheck" className={styles.cbtext}>
+                      I have accepted all terms and conditions
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <Button
+                    className={styles.ctabutton}
+                    actionType="submit"
+                    type="secondary"
+                  >
+                    Login
+                  </Button>
+                </div>
+              </form>
+              <div className={styles.loginSignup}>
+                <span className={styles.cbtext}>Already a member?</span>
+                <a
+                  href="#"
+                  className={`${styles.cbtext} ${styles.signupLink}`}
+                  onClick={changeClick}
+                >
+                  Login Now
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </form>
+      </section>
     </main>
   );
 }

@@ -1,4 +1,4 @@
-.login {
+.container {
   margin: 0;
   padding: 2.5rem 5rem;
   background-color: var(--color-dark--1);
@@ -6,26 +6,200 @@
   position: relative;
 }
 
+.container section {
+  height: calc(100vh - 77px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-dark--1);
+}
+
+.formcontainer {
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  background: var(--color-dark--2);
+  margin-bottom: 2rem;
+  overflow: hidden;
+  margin: 0 2rem;
+  border-radius: 10px;
+}
+
+.formcontainer .forms {
+  display: flex;
+  align-items: center;
+  /* background-color: red; */
+  width: 200%;
+  height: 450px;
+  justify-content: center;
+  transition: height 0.18s ease;
+}
+
 .form {
   background-color: var(--color-dark--2);
   border-radius: 7px;
   padding: 3rem 4rem;
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 
   /* Different from other form */
-  width: 48rem;
-  margin: 0rem auto;
-  position: absolute;
+  /* width: 48rem; */
+  /* margin: 0rem auto; */
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
-.row {
+.formcontainer.active .login {
+  margin-left: -100%;
+  opacity: 0;
+  transition: margin-left 0.18s ease opacity 0.15s ease;
+}
+
+.formcontainer .signup {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.formcontainer.active .signup {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.formcontainer.active .forms {
+  height: 590px;
+}
+
+.form .title {
+  font-size: 2.8rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.form .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background-color: var(--color-brand--2);
+  border-radius: 25px;
+}
+
+.form .field {
+  height: 50px;
+  width: 100%;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.field input {
+  position: absolute;
+  padding: 0 3.6rem;
+  color: var(--color-light--2);
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid transparent;
+  background-color: var(--color-dark--2);
+  transition: all 0.2s ease;
+}
+
+.field input::placeholder {
+  color: var(--color-light--1);
+}
+
+.field input:is(:focus, :valid) {
+  background-color: var(--color-dark--2);
+
+  border-bottom-color: var(--color-brand--2);
+}
+
+.field svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  position: absolute;
+  color: var(--color-light--1);
+  top: 50%;
+  /* left: 6px; */
+  transform: translateY(-50%);
+  z-index: 999;
+  transition: all 0.2s ease;
+}
+
+.field .icon {
+  left: 6px;
+}
+
+.field .ricon {
+  right: 6px;
+  cursor: pointer;
+}
+
+.field input:is(:focus, :valid) ~ svg {
+  color: var(--color-brand--2); /* or any other color */
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.8rem;
+}
+
+.checkbox .content {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.content input {
+  width: auto;
+  margin-left: 9px;
+  accent-color: var(--color-brand--2);
+}
+.content .cbtext {
+  width: 100%;
+  color: var(--color-light--2);
+  font-weight: 400;
+}
+
+.form a.cbtext {
+  color: var(--color-brand--2);
+  text-decoration: none;
+}
+
+.form a:hover {
+  text-decoration: underline;
+}
+
+.checkbox .cbtext {
+  font-size: 1.4rem;
+}
+
+.field .row {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.ctabutton {
+  margin-top: 2.6rem;
+}
+
+.form .loginSignup {
+  display: flex;
+  margin-top: 2rem;
+
+  font-size: 1.4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
 }
