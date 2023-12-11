@@ -1,5 +1,7 @@
 import "./Modal.css"; // Import CSS styles for the modal
 import PropTypes from "prop-types";
+import { HiOutlineX } from "react-icons/hi";
+
 const Modal = ({ show, children, onClose }) => {
   if (!show) {
     return null;
@@ -10,7 +12,7 @@ const Modal = ({ show, children, onClose }) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         {children}
         <button onClick={onClose} className="modal-close-btn">
-          Close
+          <HiOutlineX />
         </button>
       </div>
     </div>

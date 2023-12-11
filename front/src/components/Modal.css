@@ -13,8 +13,8 @@
 
 .modal-content {
   background-color: var(--color-dark--2);
-  padding: 2rem;
-  border-radius: 5px;
+  /* padding: 2rem; */
+  /* border-radius: 5px; */
   position: relative; /* So the close button can be positioned absolutely within */
   z-index: 1001; /* Above the overlay */
 }
@@ -23,4 +23,18 @@
   position: absolute;
   top: 10px;
   right: 10px;
+  border: none;
+  background-color: var(--color-dark--2);
+}
+
+.modal-content svg {
+  width: 2.8rem;
+  height: 2.8rem;
+  background-color: var(--color-dark--2);
+  color: var(--color-light--1);
+  cursor: pointer;
+}
+
+.modal-content svg:hover {
+  color: var(--color-light--3);
 }

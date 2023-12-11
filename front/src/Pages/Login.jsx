@@ -34,7 +34,40 @@ export default function Login() {
     setConfirmPassword("");
   }
 
-  async function handleSubmit(e) {
+  async function handleSubmitSignUp(e) {
+    e.preventDefault();
+    resetForm();
+    console.log("submitted");
+    const formData = {
+      email: email,
+
+      password: password,
+    };
+    console.log(formData);
+
+    try {
+      const res = await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.status === 201) {
+        toast.success("You have successfully signued up and logged in!", {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
+        navigate("/app/patient-records");
+      } else {
+        alert("You have entered the wrong credentials");
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+  async function handleSubmitLogin(e) {
     e.preventDefault();
     resetForm();
     console.log("submitted");
@@ -83,7 +116,7 @@ export default function Login() {
           <div className={styles.forms}>
             <div className={`${styles.form} ${styles.login}`}>
               <span className={styles.title}>Login</span>
-              <form className={` ${styles.dummy}`} onSubmit={handleSubmit}>
+              <form className={` ${styles.dummy}`} onSubmit={handleSubmitLogin}>
                 <div className={styles.row}>
                   <div className={styles.field}>
                     {/* <label htmlFor="email">Email Address</label> */}
@@ -174,7 +207,10 @@ export default function Login() {
             </div>
             <div className={`${styles.form} ${styles.signup}`}>
               <span className={styles.title}>Registration</span>
-              <form className={` ${styles.dummy}`} onSubmit={handleSubmit}>
+              <form
+                className={` ${styles.dummy}`}
+                onSubmit={handleSubmitSignUp}
+              >
                 <div className={styles.row}>
                   <div className={styles.field}>
                     {/* <label htmlFor="email">Email Address</label> */}
