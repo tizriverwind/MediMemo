@@ -39,7 +39,7 @@ export default function Login() {
     resetForm();
     console.log("submitted");
     const formData = {
-      email: email,
+      username: email,
 
       password: password,
     };
@@ -54,12 +54,17 @@ export default function Login() {
         body: JSON.stringify(formData),
       });
 
-      if (res.status === 201) {
+      if (res.status === 200) {
         toast.success("You have successfully signued up and logged in!", {
           position: toast.POSITION.TOP_RIGHT,
           theme: "dark",
         });
         navigate("/app/patient-records");
+      } else if (res.status === 400) {
+        toast.error("Email already exists", {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
       } else {
         alert("You have entered the wrong credentials");
       }
@@ -116,17 +121,22 @@ export default function Login() {
           <div className={styles.forms}>
             <div className={`${styles.form} ${styles.login}`}>
               <span className={styles.title}>Login</span>
-              <form className={` ${styles.dummy}`} onSubmit={handleSubmitLogin}>
+              <form
+                className={` ${styles.dummy}`}
+                action="/api/users/login"
+                method="post"
+              >
                 <div className={styles.row}>
                   <div className={styles.field}>
                     {/* <label htmlFor="email">Email Address</label> */}
 
                     <input
                       type="email"
-                      id="email"
+                      id="loginEmail"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
                       placeholder="Enter Your Email"
+                      name="username"
                       required
                     />
                     <HiOutlineMail className={styles.icon} />
@@ -151,10 +161,11 @@ export default function Login() {
 
                     <input
                       type={isVisible ? "text" : "password"}
-                      id="password"
+                      id="loginPassword"
                       onChange={(e) => setPassword(e.target.value)}
                       value={password}
                       placeholder="Enter Your Password"
+                      name="password"
                       required
                     />
                     <RiLockPasswordLine className={styles.icon} />
@@ -174,7 +185,7 @@ export default function Login() {
 
                 <div className={styles.checkbox}>
                   <div className={styles.content}>
-                    <input type="checkbox" id="logCheck" />
+                    <input type="Checkbox" id="loginLogCheck" />
                     <label htmlFor="logCheck" className={styles.cbtext}>
                       Remember Me
                     </label>
@@ -278,7 +289,7 @@ export default function Login() {
 
                     <input
                       type={isVisible ? "text" : "password"}
-                      id="password"
+                      id="confirmPassword"
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       value={confirmPassword}
                       placeholder="Enter Your Password"

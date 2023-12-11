@@ -23,6 +23,38 @@ function MyMongoDB() {
     }
   }
 
+  myDB.getUserbyUsername = async (username) => {
+    const { client, db } = await connect();
+    console.log("get User", username);
+
+    try {
+      const response = await db
+        .collection("doctoraccounts")
+        .findOne({ username: username });
+      console.log(response);
+      return response;
+    } catch (err) {
+      console.error("Finding user error", err.message);
+      return false;
+    } finally {
+      await client.close();
+    }
+  };
+
+  myDB.insertUser = async function (user) {
+    const { client, db } = await connect();
+    try {
+      console.log("connected to MongoDB");
+      const response = await db.collection("doctoraccounts").insertOne(user);
+      return response;
+    } catch (err) {
+      console.error("Finding user error", err.message);
+      return false;
+    } finally {
+      await client.close();
+    }
+  };
+
   myDB.insertNewUser = async (newUser) => {
     const { client, db } = await connect();
     try {

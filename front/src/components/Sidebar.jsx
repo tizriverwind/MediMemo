@@ -6,8 +6,16 @@ import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  function handleSignOut() {
-    navigate("/");
+  async function onLogout() {
+    const response = await fetch("/api/users/logout", {
+      method: "POST",
+    });
+    if (!response.ok) {
+      return;
+    }
+
+    console.log("Logging out redirecting");
+    navigate("/login");
   }
   return (
     <div className={styles.sidebar}>
@@ -18,11 +26,7 @@ const Sidebar = () => {
         </div>
         <AppNav />
       </div>
-      <Button
-        onClick={handleSignOut}
-        className={styles.signOut}
-        type="secondary"
-      >
+      <Button onClick={onLogout} className={styles.signOut} type="secondary">
         Sign Out
       </Button>
     </div>

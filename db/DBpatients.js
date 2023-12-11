@@ -26,7 +26,7 @@ function MyMongoDB() {
 
     try {
       const patients = await db.collection("patients").find({}).toArray();
-      console.log("Fetched appointments:", patients); // Add this line to log the fetched data
+      // console.log("Fetched appointments:", patients); // Add this line to log the fetched data
 
       return patients;
     } finally {

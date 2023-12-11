@@ -1,7 +1,30 @@
 import styles from "./Header.module.css";
+import { useEffect, useState } from "react";
 
 function Header() {
-  return <div className={styles.mainHeader}></div>;
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await fetch("/api/users/getUser");
+      if (!response.ok) {
+        setUser(null);
+        return;
+      }
+      const data = await response.json();
+      console.log("Get user got", data);
+
+      setUser(data.username);
+    };
+
+    fetchUser();
+  }, []);
+
+  return (
+    <div className={styles.mainHeader}>
+      <span>{user}</span>
+    </div>
+  );
 }
 
 export default Header;

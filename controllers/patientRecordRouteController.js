@@ -1,6 +1,7 @@
 import myDB from "../db/DBpatients.js";
 
 export const getPatientsCon = async (req, res) => {
+  console.log("/api/patients user=", req.user);
   try {
     myDB.getPatients().then((patients) => {
       res.status(200).json({
