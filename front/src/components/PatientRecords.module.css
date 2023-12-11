@@ -16,13 +16,6 @@
 }
 
 /* For forms */
-/* .login {
-  margin: 0;
-  padding: 2.5rem 5rem;
-  background-color: var(--color-dark--1);
-  min-height: 100vh;
-  position: relative;
-} */
 
 .form {
   background-color: var(--color-dark--2);
@@ -44,10 +37,26 @@
 
 .row {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   gap: 0.5rem;
+  align-items: center;
+}
+
+.title {
+  justify-content: center;
 }
 
 .row input {
   border-radius: 5px;
+}
+
+.row label {
+  width: 20rem;
+}
+
+.row span {
+  font-size: 2.2rem;
+  padding: 0 2rem;
+  font-weight: 600;
+  border-bottom: 5px solid var(--color-brand--2);
 }

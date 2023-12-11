@@ -11,11 +11,13 @@ const Sidebar = () => {
   }
   return (
     <div className={styles.sidebar}>
-      <div className={styles.logotitle}>
-        <Logo />
-        <p> Medimemo</p>
+      <div className={styles.firstComponent}>
+        <div className={styles.logotitle}>
+          <Logo />
+          <p> Medimemo</p>
+        </div>
+        <AppNav />
       </div>
-      <AppNav />
       <Button
         onClick={handleSignOut}
         className={styles.signOut}

@@ -89,7 +89,7 @@ export default function Login() {
                     {/* <label htmlFor="email">Email Address</label> */}
 
                     <input
-                      type="text"
+                      type="email"
                       id="email"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
@@ -195,7 +195,7 @@ export default function Login() {
                     {/* <label htmlFor="email">Email Address</label> */}
 
                     <input
-                      type="text"
+                      type="email"
                       id="email"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
@@ -228,6 +228,8 @@ export default function Login() {
                       onChange={(e) => setPassword(e.target.value)}
                       value={password}
                       placeholder="Enter Your Password"
+                      pattern={`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`}
+                      title="Password must be 8-20 characters long and include at least one letter, one number, and one special character (!@#$%^&*)."
                       required
                     />
                     <RiLockPasswordLine className={styles.icon} />
@@ -244,7 +246,9 @@ export default function Login() {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       value={confirmPassword}
                       placeholder="Enter Your Password"
+                      pattern={`${password}`}
                       required
+                      title="Passwords need to match"
                     />
                     <RiLockPasswordLine className={styles.icon} />
                     {isVisible ? (
@@ -276,7 +280,7 @@ export default function Login() {
                     actionType="submit"
                     type="secondary"
                   >
-                    Login
+                    Sign Up
                   </Button>
                 </div>
               </form>

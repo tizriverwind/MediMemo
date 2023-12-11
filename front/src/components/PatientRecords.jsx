@@ -113,11 +113,15 @@ export default function PatientRecords() {
   }
 
   function closeModal() {
+    resetForm();
+    setQuery("");
     setpatientId(null);
   }
 
   function selectPatientId(id) {
     console.log(id);
+
+    console.log(formData);
     setpatientId((patientId) => (id === patientId ? null : id));
   }
 
@@ -175,6 +179,13 @@ export default function PatientRecords() {
       {
         <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
           <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={`${styles.row} ${styles.title}`}>
+              <span>
+                {!patientId
+                  ? "Add a New Patient"
+                  : "Update Patient Information"}
+              </span>
+            </div>
             <div className={styles.row}>
               <label htmlFor="First Name">First Name</label>
               <input
@@ -201,7 +212,7 @@ export default function PatientRecords() {
               <div className={styles.row}>
                 <label htmlFor="date_of_birth">Date of Birth</label>
                 <input
-                  type="text"
+                  type="date"
                   name="date_of_birth"
                   value={formData.date_of_birth}
                   onChange={handleChange}
@@ -223,19 +234,32 @@ export default function PatientRecords() {
             </div>
             <div className={styles.row}>
               <label htmlFor="First Name">Gender</label>
-              <input
+              {/* <input
                 type="text"
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
                 placeholder="Male/Female/.."
                 required
-              />
+              /> */}
+              <select
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                required
+              >
+                <option value="" disabled>
+                  Select Gender
+                </option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
             <div className={styles.row}>
               <label htmlFor="email">Email</label>
               <input
-                type="text"
+                type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
