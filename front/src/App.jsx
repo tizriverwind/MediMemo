@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PatientRecords from "./components/PatientRecords.jsx";
-import Scheduling from "./Pages/Schedule.jsx";
+import Scheduling from "./components/Scheduling.jsx";
 import HomePage from "./Pages/HomePage.jsx"; // Import the home page component
 import PageNotFound from "./Pages/PageNotFound";
 import Login from "./Pages/Login";
