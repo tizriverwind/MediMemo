@@ -11,22 +11,27 @@
 
 .primary {
   font-weight: 700;
-  background-color: var(--color-brand--2);
-  color: var(--color-dark--1);
+  /* background-color: var(--color-brand--2); */
+  background-color: #af3939;
+  /* color: var(--color-dark--1);
+   */
+  color: #e5e7eb;
 }
 
 .secondary {
   font-weight: 700;
-  background-color: var(--color-brand--2);
-  color: var(--color-dark--1);
+  background-color: #af3939;
+  color: #e5e7eb;
   width: 100%;
   margin-top: 3.2rem;
 }
 
 .patientB {
   font-weight: 700;
-  background-color: var(--color-brand--2);
-  color: var(--color-dark--1);
+  /* background-color: var(--color-brand--2);
+  color: var(--color-dark--1); */
+  background-color: #af3939;
+  color: #e5e7eb;
   flex-shrink: 0;
 }
 
