@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.button:hover {
+  background-color: #c84242;
+}
+
 .primary {
   font-weight: 700;
   /* background-color: var(--color-brand--2); */

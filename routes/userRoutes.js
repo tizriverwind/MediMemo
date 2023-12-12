@@ -80,13 +80,31 @@ const router = express.Router();
 router.route("/").post(insertUserCon);
 
 // router.route("/login").post(authenticateAccountCon);
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/app/patient-records",
-    failureRedirect: "/",
-  })
-);
+// router.post(
+//   "/login",
+//   passport.authenticate("local", {
+//     successRedirect: "/app/patient-records",
+//     failureRedirect: "/login",
+//   })
+// );
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      // Respond with a JSON message on failure
+      return res.status(401).json({ error: info.message });
+    }
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      // Respond with a success message or redirect on success
+      return res.status(200).json({ message: "Logged in successfully" });
+    });
+  })(req, res, next);
+});
 
 router.get("/getUser", function (req, res) {
   console.log("getUser", req.user);

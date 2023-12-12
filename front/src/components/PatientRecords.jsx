@@ -1,6 +1,7 @@
 import styles from "./PatientRecords.module.css";
 import { toast } from "react-toastify";
-import { useCallback, useEffect, useState } from "react";
+import { useRef, useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Search from "./Search";
 import Button from "./Button";
 import TableHeader from "./TableHeader";
@@ -13,6 +14,50 @@ export default function PatientRecords() {
   const [patientId, setpatientId] = useState(null);
   const [patients, setPatients] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  const firstInputRef = useRef(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await fetch("/api/users/getUser");
+      console.log(response);
+
+      if (!response.ok) {
+        // If the response is not ok, show a toast and navigate to login
+        toast.error("You are not logged in! Please log in", {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
+        setUser(null);
+        navigate("/login");
+      } else {
+        // Only proceed to process data if the response is ok
+        const data = await response.json();
+        console.log("Patient Record", data);
+
+        if (data.username) {
+          setUser(data.username);
+        } else {
+          // Handle the case where username is undefined in a successful response
+          toast.error("Unable to retrieve user data. Please log in again.", {
+            position: toast.POSITION.TOP_RIGHT,
+            theme: "dark",
+          });
+          navigate("/login");
+        }
+      }
+    };
+
+    fetchUser();
+  }, [navigate]);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      firstInputRef.current.focus();
+    }
+  }, [isModalOpen]);
+
   const [formData, setFormData] = useState({
     id: "",
     first_name: "",
@@ -148,9 +193,12 @@ export default function PatientRecords() {
     const searchQuery = query.toLowerCase();
 
     const filtered = patients.filter(
-      (p) =>
-        p.first_name.toLowerCase().includes(searchQuery) ||
-        p.last_name.toLowerCase().includes(searchQuery)
+      (p) => {
+        const fullName = (p.first_name + " " + p.last_name).toLocaleLowerCase();
+        return fullName.includes(searchQuery);
+      }
+      // p.first_name.toLowerCase().includes(searchQuery) ||
+      // p.last_name.toLowerCase().includes(searchQuery)
     );
 
     setSearchPatients(filtered);
@@ -189,6 +237,7 @@ export default function PatientRecords() {
             <div className={styles.row}>
               <label htmlFor="First Name">First Name</label>
               <input
+                ref={firstInputRef}
                 type="text"
                 name="first_name"
                 value={formData.first_name}

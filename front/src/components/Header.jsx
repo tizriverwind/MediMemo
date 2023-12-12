@@ -20,11 +20,7 @@ function Header() {
     fetchUser();
   }, []);
 
-  return (
-    <div className={styles.mainHeader}>
-      <span>{user}</span>
-    </div>
-  );
+  return <div className={styles.mainHeader}></div>;
 }
 
 export default Header;

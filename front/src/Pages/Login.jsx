@@ -55,11 +55,11 @@ export default function Login() {
       });
 
       if (res.status === 200) {
-        toast.success("You have successfully signued up and logged in!", {
+        toast.success("You have successfully signed up! Please log in!", {
           position: toast.POSITION.TOP_RIGHT,
           theme: "dark",
         });
-        navigate("/app/patient-records");
+        navigate("/login");
       } else if (res.status === 400) {
         toast.error("Email already exists", {
           position: toast.POSITION.TOP_RIGHT,
@@ -72,44 +72,85 @@ export default function Login() {
       console.log(err.message);
     }
   }
+
   async function handleSubmitLogin(e) {
     e.preventDefault();
-    resetForm();
-    console.log("submitted");
-    const formData = {
-      email: email,
 
+    const formData = {
+      username: email,
       password: password,
     };
-    console.log(formData);
 
     try {
-      const res = await fetch("/api/users/login", {
+      const response = await fetch("/api/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-      resetForm();
-      if (res.status === 200) {
-        // alert("You have successfully logged in!");
-        toast.success("You have successfully logged in!", {
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success(data.message, {
           position: toast.POSITION.TOP_RIGHT,
           theme: "dark",
         });
         navigate("/app/patient-records");
       } else {
-        toast.error("You have entered the wrong credentials!", {
+        setPassword("");
+        toast.error(`${data.error}! Please log in again!`, {
           position: toast.POSITION.TOP_RIGHT,
           theme: "dark",
         });
-        // alert("You have entered the wrong credentials");
       }
     } catch (err) {
-      console.log(err.message);
+      console.error(err.message);
+      toast.error("An error occurred", {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: "dark",
+      });
     }
   }
+  // async function handleSubmitLogin(e) {
+  //   e.preventDefault();
+  //   resetForm();
+  //   console.log("submitted");
+  //   const formData = {
+  //     email: email,
+
+  //     password: password,
+  //   };
+  //   console.log(formData);
+
+  //   try {
+  //     const res = await fetch("/api/users/login", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     resetForm();
+  //     if (res.status === 200) {
+  //       // alert("You have successfully logged in!");
+  //       toast.success("You have successfully logged in!", {
+  //         position: toast.POSITION.TOP_RIGHT,
+  //         theme: "dark",
+  //       });
+  //       navigate("/app/patient-records");
+  //     } else {
+  //       toast.error("You have entered the wrong credentials!", {
+  //         position: toast.POSITION.TOP_RIGHT,
+  //         theme: "dark",
+  //       });
+  //       // alert("You have entered the wrong credentials");
+  //     }
+  //   } catch (err) {
+  //     console.log(err.message);
+  //   }
+  // }
 
   return (
     <main className={styles.container}>
@@ -123,8 +164,9 @@ export default function Login() {
               <span className={styles.title}>Login</span>
               <form
                 className={` ${styles.dummy}`}
-                action="/api/users/login"
-                method="post"
+                // action="/api/users/login"
+                // method="post"
+                onSubmit={handleSubmitLogin}
               >
                 <div className={styles.row}>
                   <div className={styles.field}>
@@ -186,7 +228,7 @@ export default function Login() {
                 <div className={styles.checkbox}>
                   <div className={styles.content}>
                     <input type="Checkbox" id="loginLogCheck" />
-                    <label htmlFor="logCheck" className={styles.cbtext}>
+                    <label htmlFor="loginLogCheck" className={styles.cbtext}>
                       Remember Me
                     </label>
                   </div>

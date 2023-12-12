@@ -9,10 +9,21 @@ function PatientRow({
   date_of_birth,
   gender,
 }) {
+  const handleKeyDown = (event) => {
+    // Check if the 'Enter' key is pressed
+    if (event.key === "Enter") {
+      selectPatientId(patient._id);
+    }
+  };
+
   return (
     <div
       onClick={() => selectPatientId(patient._id)}
+      onKeyDown={handleKeyDown}
       className={styles.container}
+      tabIndex={0} // Make the div focusable
+      role="button" // Indicate that the div is interactive
+      aria-pressed="false"
     >
       <div>{id}</div>
       <div>{first_name + " " + last_name}</div>
