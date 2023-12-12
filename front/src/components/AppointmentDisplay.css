@@ -20,7 +20,7 @@
 }
 
 .card {
-  background-color: #686868;
+  background-color: var(--color-dark--1);
   /* #e3e3e3 */
   border: 3px solid;
   border-radius: 5px;
@@ -41,12 +41,12 @@
 
 .card-title {
   margin-bottom: 15px;
-  color: #000000;
+  color: #e5e7eb;
   font-size: 1.25rem;
 }
 
 .card-text {
-  color: white;
+  color: #ececec;
   margin-bottom: 10px; /* Space between text elements */
   line-height: 1.6;
   font-size: 1rem;
@@ -85,10 +85,10 @@
 }
 
 .update-btn {
-  background-color: #007bff;
-  color: white;
+  background-color: #164c86;
+  color: #e5e7eb;
 }
-
+/* #19589c */
 .update-btn:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
@@ -97,7 +97,7 @@
 }
 
 .delete-btn {
-  background-color: #dc3545;
+  background-color: #af3939;
   color: white;
 }
 
@@ -119,4 +119,39 @@
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+/* modal pop up for delete confirmation */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.confirmation-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-dark--2);
+  padding: 20px;
+  z-index: 20;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-dialog p {
+  margin-bottom: 20px;
+}
+.del-mesg-confirmation {
+  color: #e5e7eb;
+  font-size: 20px;
+}
+
+.confirmation-dialog button {
+  margin-right: 10px;
 }

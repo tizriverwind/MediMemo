@@ -1,3 +1,6 @@
+import Button from "./Button";
+
+import { toast } from "react-toastify"; // ERASE AFTER: this is used for teh pop up alert message
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./AppointmentDisplay.css";
@@ -8,35 +11,87 @@ const AppointmentDisplay = ({
   onEdit,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [appointmentToDelete, setAppointmentToDelete] = useState(null);
+
+  const promptDeleteConfirmation = (appointmentId) => {
+    // Show confirmation dialog
+    setShowConfirmDialog(true);
+    setAppointmentToDelete(appointmentId);
+  };
 
   // DELETEING FUNCTION
-  const handleDelete = async (appointmentId) => {
-    console.log("Attempting to delete appointment with ID:", appointmentId); //TESTING
-
-    try {
-      const response = await fetch(`/api/appointments/${appointmentId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // no body is needed for a delete request
-      });
-
-      if (response.ok) {
-        // Remove the appointment from the state to update the UI
-        setAppointmentsData(
-          appointmentsData.filter(
-            (appointment) => appointment._id !== appointmentId
-          )
+  const handleDelete = async () => {
+    if (appointmentToDelete) {
+      try {
+        const response = await fetch(
+          `/api/appointments/${appointmentToDelete}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
-      } else {
-        console.error("Failed to delete the appointment.");
+
+        if (response.ok) {
+          setAppointmentsData(
+            appointmentsData.filter(
+              (appointment) => appointment._id !== appointmentToDelete
+            )
+          );
+          toast.success("Appointment deleted!", {
+            position: toast.POSITION.TOP_RIGHT,
+            theme: "dark",
+          });
+        } else {
+          console.error("Failed to delete the appointment.");
+          toast.error("Failed to delete!", {
+            position: toast.POSITION.TOP_RIGHT,
+            theme: "dark",
+          });
+        }
+      } catch (error) {
+        console.error("There was an error deleting the appointment:", error);
+        toast.error("Error deleting the appointment.", {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
       }
-    } catch (error) {
-      console.error("There was an error deleting the appointment:", error);
     }
+    // Reset confirmation dialog
+    setShowConfirmDialog(false);
+    setAppointmentToDelete(null);
+  };
+
+  const handleCancelDelete = () => {
+    // Hide confirmation dialog without deleting
+    setShowConfirmDialog(false);
+    setAppointmentToDelete(null);
   };
   // END OF DELETEING FUNCTION
+  function convertTo12HourFormat(time) {
+    // Check if time already has 'AM' or 'PM' and remove it
+    const timeSuffix = time.match(/AM|PM/);
+    if (timeSuffix) {
+      time = time.replace(timeSuffix[0], "").trim();
+    }
+
+    let [hours, minutes] = time.split(":").map(Number);
+    let ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+
+    // Ensuring double digits for hours and minutes
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+
+    return `${hours}:${minutes} ${ampm}`;
+  }
+  function formatDate(dateString) {
+    const [year, month, day] = dateString.split("-");
+    return `${month}/${day}/${year}`; // Convert to MM-DD-YYYY format
+  }
 
   return (
     <div className="container">
@@ -44,7 +99,7 @@ const AppointmentDisplay = ({
         <input
           type="text"
           className="search-bar"
-          placeholder="Search appointments..."
+          placeholder="Search appointments by doctor or patient name..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -65,17 +120,16 @@ const AppointmentDisplay = ({
             <div key={index} className="col-4">
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">
-                    Name: {appointment.patient_name}
-                  </h5>
+                  <p className="card-title">Name: {appointment.patient_name}</p>
                   <p className="card-text">
                     <strong>Doctor Name:</strong> {appointment.doctor_name}
                   </p>
                   <p className="card-text">
-                    <strong>Date:</strong> {appointment.date}
+                    <strong>Date:</strong> {formatDate(appointment.date)}
                   </p>
                   <p className="card-text">
-                    <strong>Time:</strong> {appointment.time}
+                    <strong>Time:</strong>{" "}
+                    {convertTo12HourFormat(appointment.time)}
                   </p>
                   <p className="card-text">
                     <strong>Why:</strong> {appointment.why}
@@ -84,23 +138,43 @@ const AppointmentDisplay = ({
                     <strong>Patient Number:</strong> {appointment.patient_phone}
                   </p>
                   <button
+                    className="button delete-btn"
+                    onClick={() => promptDeleteConfirmation(appointment._id)}
+                  >
+                    Delete
+                  </button>
+                  <button
                     className="button update-btn"
                     onClick={() => onEdit(appointment)}
                   >
                     Update
-                  </button>
-
-                  <button
-                    className="button delete-btn"
-                    onClick={() => handleDelete(appointment._id)}
-                  >
-                    Delete
                   </button>
                 </div>
               </div>
             </div>
           ))}
       </div>
+      {showConfirmDialog && (
+        <>
+          <div className="backdrop" onClick={handleCancelDelete}></div>
+          <div className="confirmation-dialog">
+            <div className="del-mesg-confirmation">
+              <p>
+                <strong>
+                  Are you sure you want to delete this appointment?
+                </strong>
+              </p>
+            </div>
+
+            <Button onClick={handleDelete} type="secondary">
+              Delete
+            </Button>
+            <Button onClick={handleCancelDelete} type="secondary">
+              Cancel
+            </Button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

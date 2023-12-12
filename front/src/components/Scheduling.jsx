@@ -1,4 +1,6 @@
-import "./SchedulingPage.css";
+import styles from "./SchedulingPage.module.css";
+import Button from "./Button";
+import { toast } from "react-toastify"; // ERASE AFTER: this is used for teh pop up alert message
 
 import { useState, useEffect } from "react";
 
@@ -16,7 +18,7 @@ const Scheduling = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // State for the appointment being edited
   const [editingAppointment, setEditingAppointment] = useState(null);
-  const [successMessage, setSuccessMessage] = useState("");
+  // const [successMessage, setSuccessMessage] = useState("");
   const [appointmentsData, setAppointmentsData] = useState([]);
 
   useEffect(() => {
@@ -52,17 +54,22 @@ const Scheduling = () => {
     }
     fetchData();
   }, []);
+
   const onDateChange = (nextValue) => {
     // Open modal or any other logic
-    console.log(successMessage);
+    // console.log(successMessage);
     console.log(nextValue); //  just log the date now, wokring on clader function later
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      date: nextValue.toISOString().substring(0, 10),
+    }));
     setValue(nextValue);
-    setIsModalOpen(true); // Open the modal
+    //setIsModalOpen(true); // Open the modal
   };
   // Function to open the update form with the appointment data
   const handleOpenUpdateForm = (appointment) => {
     setEditingAppointment(appointment);
-    setIsModalOpen(true);
+    setIsModalOpen(true); // Open the modal for editing
   };
 
   // Function to close the modal and clear editing state
@@ -71,10 +78,11 @@ const Scheduling = () => {
     setEditingAppointment(null);
   };
   // working with collecting form info
+  // TO DO: MAKE BOTH FORMS THE SAME, ADDING NEW AND WHEN UPDATING
   const [formData, setFormData] = useState({
     patient_name: "",
     doctor_name: "",
-    date: value.toISOString().substring(0, 10), // This will format the selected date as "YYYY-MM-DD", redo
+    date: new Date().toISOString().substring(0, 10), // Formats today's date as YYYY-MM-DD
     time: "",
     why: "",
     patient_phone: "",
@@ -112,8 +120,20 @@ const Scheduling = () => {
         // Handle successful submission here
         console.log("Setting success message"); // TESTING
         const result = await response.json();
-
-        setSuccessMessage("Appointment scheduled successfully!");
+        // TO DO: FIX THIS POP UP MESSAGE NOT WORKING, CHANGE
+        // setSuccessMessage("Appointment scheduled successfully!");
+        toast.success("Appointment Scheduled Successfully!", {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
+        setFormData({
+          patient_name: "",
+          doctor_name: "",
+          date: new Date().toISOString().substring(0, 10), // reset to today's date
+          time: "",
+          why: "",
+          patient_phone: "",
+        });
 
         setIsModalOpen(false); // Close the modal after submission
         const newAppt = formData;
@@ -150,12 +170,26 @@ const Scheduling = () => {
         // Handle the response appropriately...
         setIsModalOpen(false);
         setEditingAppointment(null);
-        const filteredAppointments = appointmentsData.filter(
-          (a) => a._id !== editingAppointment._id
-        );
-        const updatedAppointment = formData;
-        updatedAppointment._id = editingAppointment._id;
-        setAppointmentsData([updatedAppointment, ...filteredAppointments]);
+        setAppointmentsData((prevAppointments) => {
+          const index = prevAppointments.findIndex(
+            (a) => a._id === editingAppointment._id
+          );
+          if (index !== -1) {
+            // Replace the updated appointment at the found index
+            const updatedAppointments = [...prevAppointments];
+            updatedAppointments[index] = {
+              ...formData,
+              _id: editingAppointment._id,
+            };
+            return updatedAppointments;
+          }
+          return prevAppointments; // In case the appointment is not found, return the current state
+        });
+
+        toast.success("Updated Appointment!", {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
       } else {
         if (response.status === 404) {
           // 404 Not Found error
@@ -175,74 +209,111 @@ const Scheduling = () => {
   };
 
   return (
-    <div className="scheduling-container">
+    <div className={styles.container}>
       <h1 className="welcome-text">Welcome to the Scheduling Page</h1>
-      <p className="general-text">
-        Click calander day to schedule an appointment.
-      </p>
-      <div className="content-wrapper">
-        <div className="calendar-container">
-          <Calendar onChange={onDateChange} value={value} />
+
+      <div className={styles.layoutContainer}>
+        <div className={styles.calendarFlexContainer}>
+          <div className={styles.calendarContainer}>
+            <Calendar onChange={onDateChange} value={value} />
+          </div>
         </div>
-        <AppointmentDisplay
-          setAppointmentsData={setAppointmentsData}
-          appointmentsData={appointmentsData}
-          onEdit={handleOpenUpdateForm}
-        />
+        <div className={styles.formContainer}>
+          {editingAppointment ? (
+            <Modal show={isModalOpen} onClose={handleCloseModal}>
+              <AppointmentForm
+                appointment={editingAppointment}
+                onSave={handleSaveAppointment}
+                onClose={handleCloseModal}
+              />
+            </Modal>
+          ) : (
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <div className={`${styles.row} ${styles.title}`}>
+                <span>New Appointment</span>
+              </div>
+              <div className={styles.row}>
+                <label htmlFor="Patient Name">Patient Name</label>
+                <input
+                  type="text"
+                  id="patient_name"
+                  name="patient_name"
+                  value={formData.patient_name}
+                  onChange={handleChange}
+                  placeholder="Patient Name"
+                  required
+                />
+              </div>
+              <div className={styles.row}>
+                <label htmlFor="Doctor Name">Doctor Name</label>
+                <input
+                  type="text"
+                  id="doctor_name"
+                  name="doctor_name"
+                  value={formData.doctor_name}
+                  onChange={handleChange}
+                  placeholder="Doctor Name"
+                  required
+                />
+              </div>
+              <div className={styles.row}>
+                <label htmlFor="date">Date</label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className={styles.row}>
+                <label htmlFor="time">Time</label>
+                <input
+                  type="time"
+                  id="time"
+                  name="time"
+                  value={formData.time}
+                  onChange={handleChange}
+                  placeholder="Time (e.g., 03:00 PM)"
+                  required
+                />
+              </div>
+              <div className={styles.row}>
+                <label htmlFor="why">Why</label>
+                <textarea
+                  name="why"
+                  id="why"
+                  value={formData.why}
+                  onChange={handleChange}
+                  placeholder="Reason for Visit"
+                  required
+                />
+              </div>
+              <div className={styles.row}>
+                <label htmlFor="Phone Number">Patient Phone Number</label>
+                <input
+                  type="tel"
+                  id="Phone Number"
+                  name="patient_phone"
+                  value={formData.patient_phone}
+                  onChange={handleChange}
+                  placeholder="Patient Phone Number"
+                  required
+                />
+              </div>
+              <Button actionType="submit" type="secondary">
+                Schedule
+              </Button>
+            </form>
+          )}
+        </div>
       </div>
-      <Modal show={isModalOpen} onClose={handleCloseModal}>
-        {editingAppointment ? (
-          <AppointmentForm
-            appointment={editingAppointment}
-            onSave={handleSaveAppointment}
-            onClose={handleCloseModal}
-          />
-        ) : (
-          // ...The form for creating a new appointment
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="patient_name"
-              value={formData.patient_name}
-              onChange={handleChange}
-              placeholder="Patient Name"
-              required
-            />
-            <input
-              type="text"
-              name="doctor_name"
-              value={formData.doctor_name}
-              onChange={handleChange}
-              placeholder="Doctor Name"
-              required
-            />
-            <input
-              type="text"
-              name="time"
-              value={formData.time}
-              onChange={handleChange}
-              placeholder="Time (e.g., 03:00 PM)"
-              required
-            />
-            <textarea
-              name="why"
-              value={formData.why}
-              onChange={handleChange}
-              placeholder="Reason for Visit"
-              required
-            />
-            <input
-              type="tel"
-              name="patient_phone"
-              value={formData.patient_phone}
-              onChange={handleChange}
-              placeholder="Patient Phone Number"
-              required
-            />
-            <button type="submit">Submit</button>
-          </form>
-        )}
-      </Modal>
+      <AppointmentDisplay
+        setAppointmentsData={setAppointmentsData}
+        appointmentsData={appointmentsData}
+        onEdit={handleOpenUpdateForm}
+      />
     </div>
   );
 };
