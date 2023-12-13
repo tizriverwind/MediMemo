@@ -93,9 +93,10 @@ We have a collection of 1k health records in our database (meets project rubric 
 1. ReactJS
 2. JavaScript
 3. CSS3
-4. Express
-5. NodeJs
-6. MongoDB
+4. HTML
+5. Express
+6. NodeJs
+7. MongoDB
 
 ## Screenshots
 
