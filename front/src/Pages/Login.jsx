@@ -59,6 +59,7 @@ export default function Login() {
           position: toast.POSITION.TOP_RIGHT,
           theme: "dark",
         });
+        setIsActive(false);
         navigate("/login");
       } else if (res.status === 400) {
         toast.error("Email already exists", {
