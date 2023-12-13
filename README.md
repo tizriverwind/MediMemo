@@ -105,7 +105,7 @@ Logo:
 <img width="156" alt="Screenshot 2023-11-08 at 8 50 40 AM" src="https://github.com/hlahtoo/MediMemo/assets/88179209/39089d36-3c9e-4c51-b5e9-8f47226e70e3">
 
 Welcome Page:
-<img width="1206" alt="welcomePage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/3c461aa9-c59b-4865-bf9d-6eab9ec775b5">
+<img width="1171" alt="LandingPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/eaa6c31e-adda-4c83-b7b2-689d85498d5e">
 
 Log-in Page:
 <img width="1210" alt="log-inPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/da99df4a-140d-43c6-85bc-617b3e54433b">
