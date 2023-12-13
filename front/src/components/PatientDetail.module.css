@@ -1,12 +1,12 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  gap: 1.6rem;
 }
 
 .header {
   display: flex;
-  justify-items: center;
+
   align-items: center;
   gap: 2.4rem;
 }
@@ -17,7 +17,10 @@
 }
 
 .infoContainer {
+  padding: 1rem 0;
   font-size: 1.6rem;
+  border-top: solid 2px var(--color-brand--2);
+  border-bottom: solid 2px var(--color-brand--2);
 }
 
 .container h3 {
@@ -26,6 +29,7 @@
 
 .visitContainer {
   display: flex;
+  align-items: center;
 }
 .visitContainer h3 {
   flex-grow: 1;
@@ -38,5 +42,20 @@
 }
 
 .summary p {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-family: "Playfair Display", serif;
+}
+
+.row p:first-child {
+  width: 15rem;
+}
+
+.visit {
+  margin-bottom: solid 2px white;
 }

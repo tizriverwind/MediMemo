@@ -11,6 +11,7 @@
 
 .button:hover {
   background-color: #c84242;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .primary {
@@ -37,6 +38,16 @@
   background-color: #af3939;
   color: #e5e7eb;
   flex-shrink: 0;
+}
+
+.patientSec {
+  font-weight: 700;
+  background-color: var(--color-dark--1);
+}
+
+.patientSec:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--color-dark--2);
 }
 
 .back {

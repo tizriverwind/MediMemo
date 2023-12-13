@@ -164,9 +164,6 @@ export default function PatientRecords() {
   }
 
   function selectPatientId(id) {
-    console.log(id);
-
-    console.log(formData);
     setpatientId((patientId) => (id === patientId ? null : id));
   }
 

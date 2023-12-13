@@ -1,9 +1,10 @@
 @import "https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap";
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&family=Rubik:wght@400;500;700&display=swap");
 /* These CSS variables are global, so they are available in all CSS modules */
 :root {
   --color-brand--1: #ffb545;
   --color-brand--2: #fa5252;
+  --color-brand--3: ##fdbaba;
   --color-brand-light--1: #ffe3e3;
   --color-dark--0: #242a2e;
   --color-dark--1: #2d3439;

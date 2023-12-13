@@ -43,26 +43,46 @@ function PatientDetail({
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2>Patient&apos;s Details</h2>
         <Button onClick={closeModal} type="patientB">
-          Back to all patients
+          Back
         </Button>
       </div>
       <div className={styles.header}>
-        <h2>{name}</h2>
-        <Button onClick={handleDelete} type="patientB">
+        <h2>Patient&apos;s Details</h2>
+        <Button onClick={handleDelete} type="patientSec">
           Delete
         </Button>
-        <Button onClick={onPrefilledModalOpen} type="patientB">
+        <Button onClick={onPrefilledModalOpen} type="patientSec">
           Update
         </Button>
       </div>
+
       <div className={styles.infoContainer}>
-        <p>{"First Name: " + patient.first_name}</p>
+        <div className={styles.row}>
+          <p>First Name :</p>
+          <p>{patient.first_name}</p>
+        </div>
+        <div className={styles.row}>
+          <p>Last Name :</p>
+          <p>{patient.last_name}</p>
+        </div>
+        <div className={styles.row}>
+          <p>Date of Birth :</p>
+          <p>{patient.date_of_birth}</p>
+        </div>
+        <div className={styles.row}>
+          <p>Gender :</p>
+          <p>{patient.gender}</p>
+        </div>
+        <div className={styles.row}>
+          <p>Email :</p>
+          <p>{patient.email}</p>
+        </div>
+        {/* <p>{"First Name: " + patient.first_name}</p>
         <p>{"Last Name:     " + patient.last_name}</p>
         <p>{"Date of Birth: " + patient.date_of_birth}</p>
         <p>{"Gender:        " + patient.gender}</p>
-        <p>{"Email:         " + patient.email}</p>
+        <p>{"Email:         " + patient.email}</p> */}
       </div>
 
       <div className={styles.summary}>
@@ -75,13 +95,37 @@ function PatientDetail({
         {patient.visit === undefined || patient.visit.length === 0
           ? "No visists"
           : patient.visit?.map((v) => (
-              <div key={v.date}>
-                <p>{"Date : " + v.date}</p>
+              <div className={styles.visit} key={v.date}>
+                <div className={styles.row}>
+                  <p>Date :</p>
+                  <p>{v.date}</p>
+                </div>
+                <div className={styles.row}>
+                  <p>Height :</p>
+                  <p>{v.height}</p>
+                </div>
+                <div className={styles.row}>
+                  <p>Blood Pressure :</p>
+                  <p>{v.blood_pressure}</p>
+                </div>
+                <div className={styles.row}>
+                  <p>Weight :</p>
+                  <p>{v.weight}</p>
+                </div>
+                <div className={styles.row}>
+                  <p>Symptoms :</p>
+                  <p>{v.symptoms}</p>
+                </div>
+                <div className={styles.row}>
+                  <p>Diagnosis :</p>
+                  <p>{v.diagnosis}</p>
+                </div>
+                {/* <p>{"Date : " + v.date}</p>
                 <p>{"Height : " + v.height}</p>
                 <p>{"Blood Pressure : " + v.blood_pressure}</p>
                 <p>{"Weight : " + v.weight}</p>
                 <p>{"Symptoms : " + v.symptoms}</p>
-                <p>{"Diagnosis : " + v.diagnosis}</p>
+                <p>{"Diagnosis : " + v.diagnosis}</p> */}
               </div>
             ))}
       </div>
