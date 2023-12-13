@@ -12,8 +12,12 @@ function PatientDetail({
   setPatients,
 }) {
   const patient = patients.find((p) => p._id === patientId);
-  const name = patient.first_name + " " + patient.last_name;
+
   function onAddNewVisit() {
+    toast.warning("This function will be implemented in the future", {
+      position: toast.POSITION.TOP_RIGHT,
+      theme: "dark",
+    });
     console.log("New Visit Added!");
   }
 

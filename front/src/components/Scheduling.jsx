@@ -1,8 +1,9 @@
 import styles from "./SchedulingPage.module.css";
 import Button from "./Button";
 import { toast } from "react-toastify"; // ERASE AFTER: this is used for teh pop up alert message
-
-import { useState, useEffect } from "react";
+import "./Scheduling.css";
+import { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"; // this imports the default styling
@@ -12,6 +13,7 @@ import AppointmentForm from "./AppointmentForm";
 
 const Scheduling = () => {
   // here we are creating the states to track the selected states
+  const [user, setUser] = useState(null);
   // State for selected date
   const [value, setValue] = useState(new Date());
   // State to manage modal visibility
@@ -20,6 +22,42 @@ const Scheduling = () => {
   const [editingAppointment, setEditingAppointment] = useState(null);
   // const [successMessage, setSuccessMessage] = useState("");
   const [appointmentsData, setAppointmentsData] = useState([]);
+  const navigate = useNavigate();
+  const firstInputRef = useRef(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await fetch("/api/users/getUser");
+      console.log(response);
+
+      if (!response.ok) {
+        // If the response is not ok, show a toast and navigate to login
+        toast.error("You are not logged in! Please log in", {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
+        setUser(null);
+        navigate("/login");
+      } else {
+        // Only proceed to process data if the response is ok
+        const data = await response.json();
+        console.log("Patient Record", data);
+
+        if (data.username) {
+          setUser(data.username);
+        } else {
+          // Handle the case where username is undefined in a successful response
+          toast.error("Unable to retrieve user data. Please log in again.", {
+            position: toast.POSITION.TOP_RIGHT,
+            theme: "dark",
+          });
+          navigate("/login");
+        }
+      }
+    };
+
+    fetchUser();
+  }, [navigate]);
 
   useEffect(() => {
     async function fetchData() {
@@ -54,6 +92,12 @@ const Scheduling = () => {
     }
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      firstInputRef.current.focus();
+    }
+  }, [isModalOpen]);
 
   const onDateChange = (nextValue) => {
     // Open modal or any other logic
@@ -210,7 +254,7 @@ const Scheduling = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className="welcome-text">Welcome to the Scheduling Page</h1>
+      <h2 className="welcome-text">Welcome to the Scheduling Page</h2>
 
       <div className={styles.layoutContainer}>
         <div className={styles.calendarFlexContainer}>
@@ -225,6 +269,7 @@ const Scheduling = () => {
                 appointment={editingAppointment}
                 onSave={handleSaveAppointment}
                 onClose={handleCloseModal}
+                inputRef={firstInputRef}
               />
             </Modal>
           ) : (

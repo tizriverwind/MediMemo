@@ -4,7 +4,7 @@ import Button from "./Button";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 // for updating form
-const AppointmentForm = ({ appointment, onSave, onClose }) => {
+const AppointmentForm = ({ appointment, onSave, onClose, inputRef }) => {
   const [formData, setFormData] = useState({
     patient_name: "",
     doctor_name: "",
@@ -91,6 +91,7 @@ const AppointmentForm = ({ appointment, onSave, onClose }) => {
       <div className={styles.row}>
         <label htmlFor="patient_name">Patient Name</label>
         <input
+          ref={inputRef}
           type="text"
           id="patient_name"
           name="patient_name"
@@ -171,6 +172,7 @@ AppointmentForm.propTypes = {
   appointment: PropTypes.object,
   onSave: PropTypes.func,
   onClose: PropTypes.func,
+  inputRef: PropTypes.func,
 };
 
 export default AppointmentForm;

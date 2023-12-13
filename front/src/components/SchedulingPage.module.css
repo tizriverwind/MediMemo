@@ -1,5 +1,6 @@
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 120rem;
   margin: auto;
   padding: 20px;
 }
@@ -7,9 +8,11 @@
   gap: 40px; /* Adjust as necessary */
   flex-direction: column;
 }
-h1 {
+h2 {
+  font-size: 2.4rem;
   margin-bottom: 30px;
 }
+
 .calendar-flex-container {
   display: flex;
   align-items: center; /* This will vertically center the calendar */

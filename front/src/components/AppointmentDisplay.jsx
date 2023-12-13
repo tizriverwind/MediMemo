@@ -1,7 +1,7 @@
 import Button from "./Button";
 
 import { toast } from "react-toastify"; // ERASE AFTER: this is used for teh pop up alert message
-import { useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "./AppointmentDisplay.css";
 
@@ -13,12 +13,20 @@ const AppointmentDisplay = ({
   const [searchQuery, setSearchQuery] = useState("");
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [appointmentToDelete, setAppointmentToDelete] = useState(null);
+  const firstInputRef = useRef(null);
 
   const promptDeleteConfirmation = (appointmentId) => {
     // Show confirmation dialog
     setShowConfirmDialog(true);
     setAppointmentToDelete(appointmentId);
   };
+
+  useEffect(() => {
+    if (showConfirmDialog) {
+      console.log("hello");
+      firstInputRef.current.focus();
+    }
+  }, [showConfirmDialog]);
 
   // DELETEING FUNCTION
   const handleDelete = async () => {
@@ -160,13 +168,17 @@ const AppointmentDisplay = ({
           <div className="confirmation-dialog">
             <div className="del-mesg-confirmation">
               <p>
-                <strong>
+                <strong ref={firstInputRef}>
                   Are you sure you want to delete this appointment?
                 </strong>
               </p>
             </div>
 
-            <Button onClick={handleDelete} type="secondary">
+            <Button
+              inputRef={firstInputRef}
+              onClick={handleDelete}
+              type="secondary"
+            >
               Delete
             </Button>
             <Button onClick={handleCancelDelete} type="secondary">
