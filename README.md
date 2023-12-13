@@ -10,7 +10,7 @@ Hla Htoo and Vicki Diaz
 
 Please refer the links below for more details on the design
 
-Deployed Site: ADD
+Deployed Site: https://medimemo2-0.onrender.com/
 
 Walkthrough Video: https://youtu.be/DhrMyd-ph0M?feature=shared
 
@@ -107,11 +107,10 @@ We have a collection of 1k health records in our database (meets project rubric 
 ## How to Install
 
 1. Clone repository
-2. cd to the cloned folder
-3. npm install
-4. cd front => npm install => npm run build
-5. cd .. => npm start
-6. go to localhost:3000
+2. cd to the cloned folder and type command "npm i"
+   - this will run npm preinstall automatically which includes these three commands "cd front && npm install && npm run build"
+3. npm start
+4. Go to localhost:3000
 
 ## Technologies Used
 
