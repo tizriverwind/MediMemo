@@ -48,6 +48,8 @@ The following are changes that make this version of Medimemo differnt and more u
 
 ## Color Palette
 
+<img width="1322" alt="Color_Palette" src="https://github.com/hlahtoo/MediMemo/assets/88179209/8f041692-44a9-4137-ab99-912cddb4a231">
+
 ## Typography
 
 - MANROPE
