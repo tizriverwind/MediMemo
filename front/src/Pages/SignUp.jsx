@@ -122,230 +122,195 @@ export default function SignUp() {
           className={`${styles.formcontainer} ${isActive ? styles.active : ""}`}
         >
           <div className={styles.forms}>
-            <div className={`${styles.form} ${styles.login}`}>
-              <span className={styles.title}>Login</span>
-              <form
-                className={` ${styles.dummy}`}
-                // action="/api/users/login"
-                // method="post"
-                onSubmit={handleSubmitLogin}
-              >
-                <div className={styles.row}>
-                  <div className={styles.field}>
-                    {/* <label htmlFor="email">Email Address</label> */}
-
-                    <input
-                      type="email"
-                      id="loginEmail"
-                      onChange={(e) => setEmail(e.target.value)}
-                      value={email}
-                      placeholder="Enter Your Email"
-                      name="username"
-                      required
-                    />
-                    <HiOutlineMail className={styles.icon} />
-                  </div>
-                </div>
-
-                {/* <div className={styles.row}>
-                <label htmlFor="ID">ID</label>
-                <input
-                  type="ID"
-                  id="ID"
-                  onChange={(e) => setID(e.target.value)}
-                  value={ID}
-                  placeholder="Enter Your ID"
-                  required
-                />
-              </div> */}
-
-                <div className={styles.row}>
-                  <div className={styles.field}>
-                    {/* <label htmlFor="password">Password</label> */}
-
-                    <input
-                      type={isVisible ? "text" : "password"}
-                      id="loginPassword"
-                      onChange={(e) => setPassword(e.target.value)}
-                      value={password}
-                      placeholder="Enter Your Password"
-                      name="password"
-                      required
-                    />
-                    <RiLockPasswordLine className={styles.icon} />
-                    {isVisible ? (
-                      <FaRegEye
-                        className={styles.ricon}
-                        onClick={togglePWVisibility}
+            {!isActive ? (
+              <div className={`${styles.form} ${styles.login}`}>
+                <span className={styles.title}>Login</span>
+                <form
+                  className={` ${styles.dummy}`}
+                  onSubmit={handleSubmitLogin}
+                >
+                  <div className={styles.row}>
+                    <div className={styles.field}>
+                      <input
+                        type="email"
+                        id="loginEmail"
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        placeholder="Enter Your Email"
+                        name="username"
+                        required
                       />
-                    ) : (
-                      <FaRegEyeSlash
-                        className={styles.ricon}
-                        onClick={togglePWVisibility}
-                      />
-                    )}
+                      <HiOutlineMail className={styles.icon} />
+                    </div>
                   </div>
-                </div>
 
-                <div className={styles.checkbox}>
-                  <div className={styles.content}>
-                    <input type="Checkbox" id="loginLogCheck" />
-                    <label htmlFor="loginLogCheck" className={styles.cbtext}>
-                      Remember Me
-                    </label>
+                  <div className={styles.row}>
+                    <div className={styles.field}>
+                      <input
+                        type={isVisible ? "text" : "password"}
+                        id="loginPassword"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        placeholder="Enter Your Password"
+                        name="password"
+                        required
+                      />
+                      <RiLockPasswordLine className={styles.icon} />
+                      {isVisible ? (
+                        <FaRegEye
+                          className={styles.ricon}
+                          onClick={togglePWVisibility}
+                        />
+                      ) : (
+                        <FaRegEyeSlash
+                          className={styles.ricon}
+                          onClick={togglePWVisibility}
+                        />
+                      )}
+                    </div>
                   </div>
-                  <a href="#" className={styles.cbtext}>
-                    Forgot Password?
+
+                  <div className={styles.checkbox}>
+                    <div className={styles.content}>
+                      <input type="Checkbox" id="loginLogCheck" />
+                      <label htmlFor="loginLogCheck" className={styles.cbtext}>
+                        Remember Me
+                      </label>
+                    </div>
+                    <a href="#" className={styles.cbtext}>
+                      Forgot Password?
+                    </a>
+                  </div>
+
+                  <div>
+                    <Button
+                      className={styles.ctabutton}
+                      actionType="submit"
+                      type="secondary"
+                    >
+                      Login
+                    </Button>
+                  </div>
+                </form>
+                <div className={styles.loginSignup}>
+                  <span className={styles.cbtext}>Not a member?</span>
+                  <a
+                    href="#"
+                    className={`${styles.cbtext} ${styles.signupLink}`}
+                    onClick={changeClick}
+                  >
+                    Signup Now
                   </a>
                 </div>
-
-                <div>
-                  <Button
-                    className={styles.ctabutton}
-                    actionType="submit"
-                    type="secondary"
-                  >
-                    Login
-                  </Button>
-                </div>
-              </form>
-              <div className={styles.loginSignup}>
-                <span className={styles.cbtext}>Not a member?</span>
-                <a
-                  href="#"
-                  className={`${styles.cbtext} ${styles.signupLink}`}
-                  onClick={changeClick}
-                >
-                  Signup Now
-                </a>
               </div>
-            </div>
-            <div className={`${styles.form} ${styles.signup}`}>
-              <span className={styles.title}>Registration</span>
-              <form
-                className={` ${styles.dummy}`}
-                onSubmit={handleSubmitSignUp}
-              >
-                <div className={styles.row}>
-                  <div className={styles.field}>
-                    {/* <label htmlFor="email">Email Address</label> */}
-
-                    <input
-                      type="text"
-                      id="name"
-                      onChange={(e) => setName(e.target.value)}
-                      value={name}
-                      placeholder="Enter Your Name"
-                      required
-                    />
-                    <FaRegUser className={styles.icon} />
-                  </div>
-                </div>
-                <div className={styles.row}>
-                  <div className={styles.field}>
-                    {/* <label htmlFor="email">Email Address</label> */}
-
-                    <input
-                      type="email"
-                      id="email"
-                      onChange={(e) => setEmail(e.target.value)}
-                      value={email}
-                      placeholder="Enter Your Email"
-                      required
-                    />
-                    <HiOutlineMail className={styles.icon} />
-                  </div>
-                </div>
-
-                {/* <div className={styles.row}>
-                <label htmlFor="ID">ID</label>
-                <input
-                  type="ID"
-                  id="ID"
-                  onChange={(e) => setID(e.target.value)}
-                  value={ID}
-                  placeholder="Enter Your ID"
-                  required
-                />
-              </div> */}
-
-                <div className={styles.row}>
-                  <div className={styles.field}>
-                    {/* <label htmlFor="password">Password</label> */}
-
-                    <input
-                      type={isVisible ? "text" : "password"}
-                      id="password"
-                      onChange={(e) => setPassword(e.target.value)}
-                      value={password}
-                      placeholder="Enter Your Password"
-                      pattern={`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`}
-                      title="Password must be 8-20 characters long and include at least one letter, one number, and one special character (!@#$%^&*)."
-                      required
-                    />
-                    <RiLockPasswordLine className={styles.icon} />
-                  </div>
-                </div>
-
-                <div className={styles.row}>
-                  <div className={styles.field}>
-                    {/* <label htmlFor="password">Password</label> */}
-
-                    <input
-                      type={isVisible ? "text" : "password"}
-                      id="confirmPassword"
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      value={confirmPassword}
-                      placeholder="Enter Your Password"
-                      pattern={`${password}`}
-                      required
-                      title="Passwords need to match"
-                    />
-                    <RiLockPasswordLine className={styles.icon} />
-                    {isVisible ? (
-                      <FaRegEye
-                        className={styles.ricon}
-                        onClick={togglePWVisibility}
-                      />
-                    ) : (
-                      <FaRegEyeSlash
-                        className={styles.ricon}
-                        onClick={togglePWVisibility}
-                      />
-                    )}
-                  </div>
-                </div>
-
-                <div className={styles.checkbox}>
-                  <div className={styles.content}>
-                    <input type="checkbox" id="logCheck" />
-                    <label htmlFor="logCheck" className={styles.cbtext}>
-                      I have accepted all terms and conditions
-                    </label>
-                  </div>
-                </div>
-
-                <div>
-                  <Button
-                    className={styles.ctabutton}
-                    actionType="submit"
-                    type="secondary"
-                  >
-                    Sign Up
-                  </Button>
-                </div>
-              </form>
-              <div className={styles.loginSignup}>
-                <span className={styles.cbtext}>Already a member?</span>
-                <a
-                  href="#"
-                  className={`${styles.cbtext} ${styles.signupLink}`}
-                  onClick={changeClick}
+            ) : (
+              <div className={`${styles.form} ${styles.signup}`}>
+                <span className={styles.title}>Registration</span>
+                <form
+                  className={` ${styles.dummy}`}
+                  onSubmit={handleSubmitSignUp}
                 >
-                  Login Now
-                </a>
+                  <div className={styles.row}>
+                    <div className={styles.field}>
+                      <input
+                        type="text"
+                        id="name"
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
+                        placeholder="Enter Your Name"
+                        required
+                      />
+                      <FaRegUser className={styles.icon} />
+                    </div>
+                  </div>
+                  <div className={styles.row}>
+                    <div className={styles.field}>
+                      <input
+                        type="email"
+                        id="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        placeholder="Enter Your Email"
+                        required
+                      />
+                      <HiOutlineMail className={styles.icon} />
+                    </div>
+                  </div>
+
+                  <div className={styles.row}>
+                    <div className={styles.field}>
+                      <input
+                        type={isVisible ? "text" : "password"}
+                        id="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        placeholder="Enter Your Password"
+                        pattern={`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`}
+                        title="Password must be 8-20 characters long and include at least one letter, one number, and one special character (!@#$%^&*)."
+                        required
+                      />
+                      <RiLockPasswordLine className={styles.icon} />
+                    </div>
+                  </div>
+
+                  <div className={styles.row}>
+                    <div className={styles.field}>
+                      <input
+                        type={isVisible ? "text" : "password"}
+                        id="confirmPassword"
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        value={confirmPassword}
+                        placeholder="Enter Your Password"
+                        pattern={`${password}`}
+                        required
+                        title="Passwords need to match"
+                      />
+                      <RiLockPasswordLine className={styles.icon} />
+                      {isVisible ? (
+                        <FaRegEye
+                          className={styles.ricon}
+                          onClick={togglePWVisibility}
+                        />
+                      ) : (
+                        <FaRegEyeSlash
+                          className={styles.ricon}
+                          onClick={togglePWVisibility}
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                  <div className={styles.checkbox}>
+                    <div className={styles.content}>
+                      <input type="checkbox" id="logCheck" />
+                      <label htmlFor="logCheck" className={styles.cbtext}>
+                        I have accepted all terms and conditions
+                      </label>
+                    </div>
+                  </div>
+
+                  <div>
+                    <Button
+                      className={styles.ctabutton}
+                      actionType="submit"
+                      type="secondary"
+                    >
+                      Sign Up
+                    </Button>
+                  </div>
+                </form>
+                <div className={styles.loginSignup}>
+                  <span className={styles.cbtext}>Already a member?</span>
+                  <a
+                    href="#"
+                    className={`${styles.cbtext} ${styles.signupLink}`}
+                    onClick={changeClick}
+                  >
+                    Login Now
+                  </a>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
