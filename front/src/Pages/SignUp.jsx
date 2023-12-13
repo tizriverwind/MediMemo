@@ -190,7 +190,7 @@ export default function SignUp() {
                 <div className={styles.checkbox}>
                   <div className={styles.content}>
                     <input type="Checkbox" id="loginLogCheck" />
-                    <label htmlFor="logCheck" className={styles.cbtext}>
+                    <label htmlFor="loginLogCheck" className={styles.cbtext}>
                       Remember Me
                     </label>
                   </div>
