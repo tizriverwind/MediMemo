@@ -104,39 +104,50 @@ Logo:
 
 <img width="156" alt="Screenshot 2023-11-08 at 8 50 40 AM" src="https://github.com/hlahtoo/MediMemo/assets/88179209/39089d36-3c9e-4c51-b5e9-8f47226e70e3">
 
-Welcome Page:
+Landing Page:
+
 <img width="1171" alt="LandingPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/eaa6c31e-adda-4c83-b7b2-689d85498d5e">
 
 Log-in Page:
-<img width="1210" alt="log-inPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/da99df4a-140d-43c6-85bc-617b3e54433b">
 
-Sign-UP Page:
-<img width="1202" alt="sign-upPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/663d863a-e712-4821-ba50-d168b5dc798b">
+<img width="1155" alt="LoginPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/b5d6b019-b1a0-4f33-a250-e784030a8393">
+
+Register Page:
+<img width="1152" alt="RegisterPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/d25e08e2-0a11-43b6-b691-00869ac20ae1">
 
 ### Patient Pages
 
 Main Patient Page:
-<img width="1195" alt="P-GeneralPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/17e6e232-7c96-472a-92cc-95bee7d86bf7">
+
+<img width="1197" alt="P-GeneralPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/63f4faa9-7949-4bf6-8116-1ab97cd8fe02">
 
 Adding New Patient Feature:
-<img width="1194" alt="P-AddNewPatientForm" src="https://github.com/hlahtoo/MediMemo/assets/88179209/031d6ce0-d026-4c50-b0ac-96b031acd191">
+
+<img width="582" alt="P-AddPatientForm" src="https://github.com/hlahtoo/MediMemo/assets/88179209/9af7f13d-e449-4528-bfc5-7b254689fb72">
 
 Patient Record Page:
-<img width="1190" alt="P-PatientRecordPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/4a2da040-77f1-41ae-b796-bfde8ac2d066">
 
-Search Patient Feature Example:
-<img width="1196" alt="P-SearchingFeatureExample" src="https://github.com/hlahtoo/MediMemo/assets/88179209/857cc9ed-2dab-41ad-84e1-4afa22cbb8bf">
+<img width="1202" alt="P-PatientRecordsPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/3d940b18-f534-4cd9-94f4-269680ab4134">
+
+Update Patient Form:
+
+<img width="584" alt="P-UpdatePatientPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/c5e46649-9f91-4fce-b373-4062348622de">
 
 ### Scheduling Page
 
-Main Scheduling Page:
-<img width="1433" alt="S-GeneralPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/ee010e3d-d11a-476c-9940-322521c5c3b6">
+Main Scheduling Page/Create Appointment Form:
 
-Create Appointment Form:
-<img width="1425" alt="S-CreateAppointmentForm" src="https://github.com/hlahtoo/MediMemo/assets/88179209/53fc67a4-6fdc-4bbd-81b4-73dca6dfe2cc">
+<img width="1284" alt="S-GeneralPage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/6988e0bc-816f-415e-ae9b-1e127dcddb39">
+
+Appointment Display:
+
+<img width="1279" alt="S-AppointmentDisplay" src="https://github.com/hlahtoo/MediMemo/assets/88179209/d2c6b3c5-f133-4ce4-a86d-15489daa9373">
 
 Update Appointment Form Feature:
-<img width="1423" alt="S-UpdateFormExample" src="https://github.com/hlahtoo/MediMemo/assets/88179209/b8e8fc3e-93a9-489c-aee7-4186bbad54fc">
 
-Search Appointment Feature Example:
-<img width="1422" alt="S-SearchingFeature" src="https://github.com/hlahtoo/MediMemo/assets/88179209/c95a7a6a-3ddb-4e48-a520-85c240ee87e9">
+<img width="580" alt="S-UpdateAppointmentForm" src="https://github.com/hlahtoo/MediMemo/assets/88179209/aef20a88-421e-4d12-a23f-a0d3f64e8a18">
+
+Delete Warning Message:
+
+<img width="1023" alt="S-DeleteMsg" src="https://github.com/hlahtoo/MediMemo/assets/88179209/ab1a45c2-8cab-4ebf-b900-67a802ffaa47">
+
