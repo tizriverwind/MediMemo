@@ -21,12 +21,12 @@
 .sidebar-link {
   display: block;
   padding: 10px;
-  color: #333; /* Adjust link color as needed */
+  color: #333;
   text-decoration: none;
 }
 
 .sidebar-link:hover {
-  background-color: #ddd; /* Adjust hover color as needed */
+  background-color: #ddd;
 }
 
 .sidebar p {

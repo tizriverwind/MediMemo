@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-import { toast } from "react-toastify"; // ERASE AFTER: this is used for teh pop up alert message
+import { toast } from "react-toastify";
 import { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "./AppointmentDisplay.css";

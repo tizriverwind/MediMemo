@@ -21,14 +21,13 @@ const AppointmentForm = ({ appointment, onSave, onClose, inputRef }) => {
 
       const [month, day, year] = appointment.date.split("-");
 
-      console.log("Split date:", { month, day, year }); // Step 2: Log each component
+      console.log("Split date:", { month, day, year }); // TESTING
       const formattedMonth = month.padStart(2, "0");
       const formattedDay = day.padStart(2, "0");
 
-      const formattedDate = `${formattedMonth}-${formattedDay}-${year}`; // converting to YYYY-MM-DD
-      //const formattedDate = `${year}-${formattedMonth}-${formattedDay}`; // converting to YYYY-MM-DD
+      const formattedDate = `${formattedMonth}-${formattedDay}-${year}`;
 
-      console.log("Formatted date:", formattedDate); // Step 3: Log the formatted date
+      console.log("Formatted date:", formattedDate); // TESTING
 
       setFormData({
         patient_name: appointment.patient_name,

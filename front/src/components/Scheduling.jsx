@@ -1,12 +1,12 @@
 import styles from "./SchedulingPage.module.css";
 import Button from "./Button";
-import { toast } from "react-toastify"; // ERASE AFTER: this is used for teh pop up alert message
+import { toast } from "react-toastify";
 import "./Scheduling.css";
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css"; // this imports the default styling
+import "react-calendar/dist/Calendar.css";
 import Modal from "./Modal";
 import AppointmentDisplay from "./AppointmentDisplay";
 import AppointmentForm from "./AppointmentForm";
@@ -104,14 +104,12 @@ const Scheduling = () => {
 
   const onDateChange = (nextValue) => {
     // Open modal or any other logic
-    // console.log(successMessage);
-    console.log(nextValue); //  just log the date now, wokring on clader function later
+
     setFormData((prevFormData) => ({
       ...prevFormData,
       date: nextValue.toISOString().substring(0, 10),
     }));
     setValue(nextValue);
-    //setIsModalOpen(true); // Open the modal
   };
   // Function to open the update form with the appointment data
   const handleOpenUpdateForm = (appointment) => {
@@ -125,7 +123,6 @@ const Scheduling = () => {
     setEditingAppointment(null);
   };
   // working with collecting form info
-  // TO DO: MAKE BOTH FORMS THE SAME, ADDING NEW AND WHEN UPDATING
   const [formData, setFormData] = useState({
     patient_name: "",
     doctor_name: "",
@@ -167,8 +164,7 @@ const Scheduling = () => {
         // Handle successful submission here
         console.log("Setting success message"); // TESTING
         const result = await response.json();
-        // TO DO: FIX THIS POP UP MESSAGE NOT WORKING, CHANGE
-        // setSuccessMessage("Appointment scheduled successfully!");
+
         toast.success("Appointment Scheduled Successfully!", {
           position: toast.POSITION.TOP_RIGHT,
           theme: "dark",
@@ -249,7 +245,6 @@ const Scheduling = () => {
           console.error("Network error while saving the appointment.");
         }
       }
-      // You might need to fetch the updated list of appointments here or update the state
     } catch (error) {
       console.error("Error saving the appointment:", error);
     }

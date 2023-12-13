@@ -21,7 +21,7 @@
 
 .card {
   background-color: var(--color-dark--1);
-  /* #e3e3e3 */
+
   border: 3px solid;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -32,7 +32,7 @@
 /* highlights the card when hovering over  */
 .card:hover {
   box-shadow: 0 8px 16px rgba(237, 6, 6, 0.2);
-  background-color: #703b3f; /* A light red background color */
+  background-color: #703b3f;
 }
 
 .card-body {
@@ -52,7 +52,6 @@
   font-size: 1rem;
 }
 
-/* Optionally, you might want to add some top margin to the first element after the header */
 .container > p:first-child {
   margin-top: 20px;
 }
@@ -88,7 +87,6 @@
   background-color: #164c86;
   color: #e5e7eb;
 }
-/* #19589c */
 .update-btn:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
@@ -110,7 +108,7 @@
 
 /* searchBar styling */
 .search-container {
-  margin-bottom: 20px; /* Adjust as needed */
+  margin-bottom: 20px;
 }
 
 .search-bar {

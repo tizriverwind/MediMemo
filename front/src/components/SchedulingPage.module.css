@@ -5,7 +5,7 @@
   padding: 20px;
 }
 .content-wrapper {
-  gap: 40px; /* Adjust as necessary */
+  gap: 40px;
   flex-direction: column;
 }
 h2 {
@@ -22,8 +22,8 @@ h2 {
 
 .layoutContainer {
   display: flex;
-  justify-content: space-between; /* This will place space between the calendar and the form */
-  align-items: stretch; /* This will align items to the start of the container */
+  justify-content: space-between; /*  space between the calendar and the form */
+  align-items: stretch; /* align items to the start of the container */
   gap: 20px; /* This provides space between the calendar and form */
 }
 
@@ -35,10 +35,9 @@ h2 {
 .calendar-container {
   margin-top: auto;
   margin-bottom: auto;
-  /* The rest of your styles for the calendar container */
 }
 
-/* FORM */
+/* FORM style*/
 .form {
   background-color: var(--color-dark--2);
   border-radius: 7px;
@@ -52,15 +51,11 @@ h2 {
   /* Different from other form */
   width: 64rem;
   margin: 0rem auto;
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
 }
 
 .row {
   display: flex;
-  /* flex-direction: column; */
+
   gap: 0.5rem;
   align-items: center;
 }
@@ -130,6 +125,5 @@ h2 {
   margin-bottom: 30px;
 }
 .welcome-text {
-  /* font-size: 20px; */
   margin-bottom: 30px;
 }
