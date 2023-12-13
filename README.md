@@ -46,6 +46,13 @@ The following are changes that make this version of Medimemo differnt and more u
 - Updated Scheduling page to guide a user on creating an appointment
   - Have calandar and form side by side.
 
+## Color Palette
+
+## Typography
+
+- MANROPE
+- PLAYFAIR DISPLAY
+
 ## Functionalities/How to use
 
 - Landing Page:
