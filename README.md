@@ -1,4 +1,4 @@
-# MediMemo
+# MediMemo (Version 2 - Upgraded)
 
 ## Authors
 
@@ -8,11 +8,11 @@ Hla Htoo and Vicki Diaz
 
 Please refer the links below for more details on the design
 
-Deployed Site: https://medimemo.onrender.com/
+Deployed Site: ADD
 
-Walkthrough Video: https://youtu.be/U_mODY9ivF0
+Walkthrough Video: ADD
 
-Slides: https://docs.google.com/presentation/d/13-1o0IpWsq3YYmtJ48PFvMDYHdt9lrsDxW3CcCHUO5g/edit#slide=id.p
+Slides: https://docs.google.com/presentation/d/1YWXesMCL6IqQcE3hzP7l2Il82Qg0GneY6mioO5sB38k/edit?usp=sharing
 
 Design Document: [Click to view the design document](MediMemo/designDocument/Project-3-design-document.pdf)
 
@@ -25,6 +25,10 @@ Medimemo is an online platform designed for healthcare providers to optimize the
 ## Disclaimer
 
 All data in this project is fictitious and for educational and demonstration purposes only. It does not represent real healthcare records or individuals. Please use responsibly and ethically.
+
+## Changes Made
+
+ADD
 
 ## Functionalities/How to use
 
@@ -53,27 +57,27 @@ All data in this project is fictitious and for educational and demonstration pur
 ### Hla Htoo
 
 1. CREATE
-   - Whenever a user clicks on "Add new patient" button (on the top right), user is able to create a new patient.
+   - Whenever a user clicks on "Add new patient" button, user is able to create a new patient.
    - Log-in/Sign-up creates users. Added to users collections in database
 2. READ
    - On the patient page, all the data shown is fetched from collection named "patients" in database.
 3. UPDATE
-   - Once in a specific helath record page, the "update" button (on top right) lets user update the health record. The update also updates the patient collection in database.
+   - Once in a specific helath record page, the "update" button lets user update the health record. The update also updates the patient collection in database.
 4. DELETE
-   - Once in a specific helath record page, the "delete" button (on top right) lets user delete the patient. It also deletes patient collection in database.
+   - Once in a specific helath record page, the "delete" button lets user delete the patient. It also deletes patient collection in database.
 
 We have a collection of 1k health records in our database (meets project rubric requirements)
 
 ### Vicki Diaz
 
 1. CREATE
-   - Whenever a user click on a date on the calander a form pops up for new appointment details. When submitted, a new appointment is craeted and added to "appointment" collection in data base.
+   - User can fill out "New Appointment" to create a new appointment and a appointment card is created in "Scheduled Appointments" section. When submitted, a new appointment is craeted and added to "appointment" collection in data base.
 2. READ
    - On the scheduling page, all the data shown is fetched from collection named "appointments" in database.
 3. UPDATE
    - The "update" button (found on each appointment card) lets you update the appointment details. The update also updates the appointment collection in database.
 4. DELETE
-   - Clicking the "delete" button (found on each appointment card) lets user delete the appointment. It also deletes appointment collection in database.
+   - Clicking the "delete" button (found on each appointment card) lets user delete the appointment. It also deletes appointment collection in database. User is presented with warning message before deleting.
 
 ## How to Install
 
@@ -98,7 +102,6 @@ We have a collection of 1k health records in our database (meets project rubric 
 Logo:
 
 <img width="156" alt="Screenshot 2023-11-08 at 8 50 40 AM" src="https://github.com/hlahtoo/MediMemo/assets/88179209/39089d36-3c9e-4c51-b5e9-8f47226e70e3">
-
 
 Welcome Page:
 <img width="1206" alt="welcomePage" src="https://github.com/hlahtoo/MediMemo/assets/88179209/3c461aa9-c59b-4865-bf9d-6eab9ec775b5">
