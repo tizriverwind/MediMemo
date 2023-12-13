@@ -6,8 +6,7 @@ import logger from "morgan";
 import { fileURLToPath } from "url";
 
 import passport from "passport";
-import LocalStrategy from "passport-local";
-import crypto from "crypto";
+
 import session from "express-session";
 
 import patientRouter from "./routes/patientrecordRoutes.js";

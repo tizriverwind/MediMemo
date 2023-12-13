@@ -68,20 +68,6 @@ const AppointmentForm = ({ appointment, onSave, onClose, inputRef }) => {
     e.preventDefault();
     onSave(formData);
   };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   // Convert date back to MM-DD-YYYY format
-  //   const dateParts = formData.date.split("-");
-  //   const formattedDateForDatabase = `${dateParts[1]}-${dateParts[2]}-${dateParts[0]}`;
-
-  //   const dataToSubmit = {
-  //     ...formData,
-  //     date: formattedDateForDatabase, // Use the converted date
-  //   };
-
-  //   onSave(dataToSubmit);
-  // };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>

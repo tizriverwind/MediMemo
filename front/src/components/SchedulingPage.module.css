@@ -84,13 +84,6 @@ h2 {
   border-bottom: 5px solid var(--color-brand--2);
 }
 
-/* end form  */
-/* .calendar-container {
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  margin-bottom: 30px;
-} */
 .appointment-display-container {
   flex: 2;
   display: flex;

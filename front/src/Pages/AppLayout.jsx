@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import styles from "./AppLayout.module.css";
-import PatientRecords from "../components/PatientRecords";
 
 function AppLayout() {
   return (

@@ -30,7 +30,6 @@ function PatientDetail({
         body: JSON.stringify(patient),
       });
       if (res.status === 204) {
-        // alert("The request has been deleted");
         toast.success("Patient Deleted", {
           position: toast.POSITION.TOP_RIGHT,
           theme: "dark",
@@ -82,11 +81,6 @@ function PatientDetail({
           <p>Email :</p>
           <p>{patient.email}</p>
         </div>
-        {/* <p>{"First Name: " + patient.first_name}</p>
-        <p>{"Last Name:     " + patient.last_name}</p>
-        <p>{"Date of Birth: " + patient.date_of_birth}</p>
-        <p>{"Gender:        " + patient.gender}</p>
-        <p>{"Email:         " + patient.email}</p> */}
       </div>
 
       <div className={styles.summary}>
@@ -124,12 +118,6 @@ function PatientDetail({
                   <p>Diagnosis :</p>
                   <p>{v.diagnosis}</p>
                 </div>
-                {/* <p>{"Date : " + v.date}</p>
-                <p>{"Height : " + v.height}</p>
-                <p>{"Blood Pressure : " + v.blood_pressure}</p>
-                <p>{"Weight : " + v.weight}</p>
-                <p>{"Symptoms : " + v.symptoms}</p>
-                <p>{"Diagnosis : " + v.diagnosis}</p> */}
               </div>
             ))}
       </div>

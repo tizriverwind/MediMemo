@@ -14,6 +14,8 @@ export default function PatientRecords() {
   const [patientId, setpatientId] = useState(null);
   const [patients, setPatients] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // user wasn't used apart from trying confrim the user is logged in or not
+  // that's why it wasn't used
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const firstInputRef = useRef(null);
@@ -105,7 +107,6 @@ export default function PatientRecords() {
         const resJSON = await res.json();
 
         if (res.status === 201) {
-          // alert("New Patient Added");
           toast.success("Patient Added Successfully!", {
             position: toast.POSITION.TOP_RIGHT,
             theme: "dark",
@@ -142,12 +143,7 @@ export default function PatientRecords() {
         const resultJSON = await res.json();
         console.log(resultJSON.data.updatedPatient);
 
-        // const updatedPatientObject = patients.find((p) => p.id === patientId);
-        // const updatedPatientVisits = updatedPatientObject.visit;
-        // const updatedPatient = formData;
-        // updatedPatient.visit = updatedPatientVisits;
         const filteredPatients = patients.filter((p) => p.id !== patientId);
-        // console.log(updatedPatient);
         setPatients([resultJSON.data.updatedPatient, ...filteredPatients]);
       } catch (err) {
         console.log(err.message);
@@ -189,14 +185,10 @@ export default function PatientRecords() {
   const filterPatients = useCallback(() => {
     const searchQuery = query.toLowerCase();
 
-    const filtered = patients.filter(
-      (p) => {
-        const fullName = (p.first_name + " " + p.last_name).toLocaleLowerCase();
-        return fullName.includes(searchQuery);
-      }
-      // p.first_name.toLowerCase().includes(searchQuery) ||
-      // p.last_name.toLowerCase().includes(searchQuery)
-    );
+    const filtered = patients.filter((p) => {
+      const fullName = (p.first_name + " " + p.last_name).toLocaleLowerCase();
+      return fullName.includes(searchQuery);
+    });
 
     setSearchPatients(filtered);
   }, [query, patients, setSearchPatients]);
@@ -280,14 +272,6 @@ export default function PatientRecords() {
             </div>
             <div className={styles.row}>
               <label htmlFor="First Name">Gender</label>
-              {/* <input
-                type="text"
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                placeholder="Male/Female/.."
-                required
-              /> */}
               <select
                 name="gender"
                 value={formData.gender}
@@ -318,7 +302,6 @@ export default function PatientRecords() {
                 Update
               </Button>
             ) : (
-              // <button type="update">Add</button>
               <Button actionType="submit" type="secondary">
                 Add
               </Button>

@@ -13,6 +13,9 @@ import AppointmentForm from "./AppointmentForm";
 
 const Scheduling = () => {
   // here we are creating the states to track the selected states
+
+  // user wasn't used anywhere apart from trying to confirm that the user is logged in
+  // that is why there is an eslint error
   const [user, setUser] = useState(null);
   // State for selected date
   const [value, setValue] = useState(new Date());

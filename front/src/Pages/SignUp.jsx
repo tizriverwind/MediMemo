@@ -113,44 +113,6 @@ export default function SignUp() {
       });
     }
   }
-  // async function handleSubmitLogin(e) {
-  //   e.preventDefault();
-  //   resetForm();
-  //   console.log("submitted");
-  //   const formData = {
-  //     email: email,
-
-  //     password: password,
-  //   };
-  //   console.log(formData);
-
-  //   try {
-  //     const res = await fetch("/api/users/login", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-  //     resetForm();
-  //     if (res.status === 200) {
-  //       // alert("You have successfully logged in!");
-  //       toast.success("You have successfully logged in!", {
-  //         position: toast.POSITION.TOP_RIGHT,
-  //         theme: "dark",
-  //       });
-  //       navigate("/app/patient-records");
-  //     } else {
-  //       toast.error("You have entered the wrong credentials!", {
-  //         position: toast.POSITION.TOP_RIGHT,
-  //         theme: "dark",
-  //       });
-  //       // alert("You have entered the wrong credentials");
-  //     }
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
-  // }
 
   return (
     <main className={styles.container}>

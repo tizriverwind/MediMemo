@@ -79,14 +79,6 @@ passport.deserializeUser(function (user, cb) {
 const router = express.Router();
 router.route("/").post(insertUserCon);
 
-// router.route("/login").post(authenticateAccountCon);
-// router.post(
-//   "/login",
-//   passport.authenticate("local", {
-//     successRedirect: "/app/patient-records",
-//     failureRedirect: "/login",
-//   })
-// );
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {

@@ -114,44 +114,6 @@ export default function Login() {
       });
     }
   }
-  // async function handleSubmitLogin(e) {
-  //   e.preventDefault();
-  //   resetForm();
-  //   console.log("submitted");
-  //   const formData = {
-  //     email: email,
-
-  //     password: password,
-  //   };
-  //   console.log(formData);
-
-  //   try {
-  //     const res = await fetch("/api/users/login", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-  //     resetForm();
-  //     if (res.status === 200) {
-  //       // alert("You have successfully logged in!");
-  //       toast.success("You have successfully logged in!", {
-  //         position: toast.POSITION.TOP_RIGHT,
-  //         theme: "dark",
-  //       });
-  //       navigate("/app/patient-records");
-  //     } else {
-  //       toast.error("You have entered the wrong credentials!", {
-  //         position: toast.POSITION.TOP_RIGHT,
-  //         theme: "dark",
-  //       });
-  //       // alert("You have entered the wrong credentials");
-  //     }
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
-  // }
 
   return (
     <main className={styles.container}>
@@ -163,16 +125,9 @@ export default function Login() {
           <div className={styles.forms}>
             <div className={`${styles.form} ${styles.login}`}>
               <span className={styles.title}>Login</span>
-              <form
-                className={` ${styles.dummy}`}
-                // action="/api/users/login"
-                // method="post"
-                onSubmit={handleSubmitLogin}
-              >
+              <form className={` ${styles.dummy}`} onSubmit={handleSubmitLogin}>
                 <div className={styles.row}>
                   <div className={styles.field}>
-                    {/* <label htmlFor="email">Email Address</label> */}
-
                     <input
                       type="email"
                       id="loginEmail"
@@ -186,22 +141,8 @@ export default function Login() {
                   </div>
                 </div>
 
-                {/* <div className={styles.row}>
-                <label htmlFor="ID">ID</label>
-                <input
-                  type="ID"
-                  id="ID"
-                  onChange={(e) => setID(e.target.value)}
-                  value={ID}
-                  placeholder="Enter Your ID"
-                  required
-                />
-              </div> */}
-
                 <div className={styles.row}>
                   <div className={styles.field}>
-                    {/* <label htmlFor="password">Password</label> */}
-
                     <input
                       type={isVisible ? "text" : "password"}
                       id="loginPassword"
@@ -259,6 +200,7 @@ export default function Login() {
                 </a>
               </div>
             </div>
+
             <div className={`${styles.form} ${styles.signup}`}>
               <span className={styles.title}>Registration</span>
               <form
@@ -267,8 +209,6 @@ export default function Login() {
               >
                 <div className={styles.row}>
                   <div className={styles.field}>
-                    {/* <label htmlFor="email">Email Address</label> */}
-
                     <input
                       type="text"
                       id="name"
@@ -282,8 +222,6 @@ export default function Login() {
                 </div>
                 <div className={styles.row}>
                   <div className={styles.field}>
-                    {/* <label htmlFor="email">Email Address</label> */}
-
                     <input
                       type="email"
                       id="email"
@@ -296,22 +234,8 @@ export default function Login() {
                   </div>
                 </div>
 
-                {/* <div className={styles.row}>
-                <label htmlFor="ID">ID</label>
-                <input
-                  type="ID"
-                  id="ID"
-                  onChange={(e) => setID(e.target.value)}
-                  value={ID}
-                  placeholder="Enter Your ID"
-                  required
-                />
-              </div> */}
-
                 <div className={styles.row}>
                   <div className={styles.field}>
-                    {/* <label htmlFor="password">Password</label> */}
-
                     <input
                       type={isVisible ? "text" : "password"}
                       id="password"
@@ -328,8 +252,6 @@ export default function Login() {
 
                 <div className={styles.row}>
                   <div className={styles.field}>
-                    {/* <label htmlFor="password">Password</label> */}
-
                     <input
                       type={isVisible ? "text" : "password"}
                       id="confirmPassword"

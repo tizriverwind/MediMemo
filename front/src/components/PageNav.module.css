@@ -27,8 +27,6 @@
 
 a.ctaLink:link,
 a.ctaLink:visited {
-  /* background-color: var(--color-brand--2);
-  color: var(--color-dark--2); */
   background-color: #af3939;
   color: #e5e7eb;
   padding: 0.8rem 2rem;
