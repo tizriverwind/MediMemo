@@ -26,6 +26,8 @@ const AppointmentForm = ({ appointment, onSave, onClose }) => {
       const formattedDay = day.padStart(2, "0");
 
       const formattedDate = `${formattedMonth}-${formattedDay}-${year}`; // converting to YYYY-MM-DD
+      //const formattedDate = `${year}-${formattedMonth}-${formattedDay}`; // converting to YYYY-MM-DD
+
       console.log("Formatted date:", formattedDate); // Step 3: Log the formatted date
 
       setFormData({
@@ -62,24 +64,24 @@ const AppointmentForm = ({ appointment, onSave, onClose }) => {
     }));
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   onSave(formData);
-  // };
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Convert date back to MM-DD-YYYY format
-    const dateParts = formData.date.split("-");
-    const formattedDateForDatabase = `${dateParts[1]}-${dateParts[2]}-${dateParts[0]}`;
-
-    const dataToSubmit = {
-      ...formData,
-      date: formattedDateForDatabase, // Use the converted date
-    };
-
-    onSave(dataToSubmit);
+    onSave(formData);
   };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   // Convert date back to MM-DD-YYYY format
+  //   const dateParts = formData.date.split("-");
+  //   const formattedDateForDatabase = `${dateParts[1]}-${dateParts[2]}-${dateParts[0]}`;
+
+  //   const dataToSubmit = {
+  //     ...formData,
+  //     date: formattedDateForDatabase, // Use the converted date
+  //   };
+
+  //   onSave(dataToSubmit);
+  // };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
