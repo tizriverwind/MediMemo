@@ -1,5 +1,7 @@
 # MediMemo (Version 2 - Upgraded)
 
+This is a continuation of our previous Medimemo Application. It focuses on making the application more usable and accessible for everyone. Additionally, it features a new design that makes it easier and faster to use.
+
 ## Authors
 
 Hla Htoo and Vicki Diaz
@@ -10,7 +12,7 @@ Please refer the links below for more details on the design
 
 Deployed Site: ADD
 
-Walkthrough Video: ADD
+Walkthrough Video: https://youtu.be/DhrMyd-ph0M?feature=shared
 
 Slides: https://docs.google.com/presentation/d/1YWXesMCL6IqQcE3hzP7l2Il82Qg0GneY6mioO5sB38k/edit?usp=sharing
 
@@ -28,7 +30,21 @@ All data in this project is fictitious and for educational and demonstration pur
 
 ## Changes Made
 
-ADD
+The following are changes that make this version of Medimemo differnt and more usable/asseable to the previous version. Changes were influenced by user test studies (3 per team memeber).
+
+- Added two types typography
+- Implemented color palette on all pages
+- Implemented passport.js for user authentication
+- 100% accessibility on Lighthouse to ensure accessibility
+- Make the whole website accessible with keyboard including focusing to the first input element when opening the form using useRef
+- Completely modify login/signup page to meet the standard forms such as confirming password to register
+- Completely redesign the all forms (style and structure)
+- Made forms and search placeholders more informative
+- Created pop up messages Instead of using alert(“”) function to notify if task was successful or not
+- Made the information pages unaccessible if user hasn’t logged in
+- Rearranged the buttons to create a visual hierarchy
+- Updated Scheduling page to guide a user on creating an appointment
+  - Have calandar and form side by side.
 
 ## Functionalities/How to use
 
@@ -42,7 +58,7 @@ ADD
   - Clicking on a patient takes you to their health record
   - In health record, user is able to UPDATE and DELETE a health record
 - Schedule Page:
-  - Lets a user create/add a new appointment by clicking a date on the calander and filling out a form
+  - Lets a user CREATE/add a new appointment.
   - Search bar lets you filter through all appointments
     - you can filter by typing the following details:
       - Patient name
@@ -58,7 +74,7 @@ ADD
 
 1. CREATE
    - Whenever a user clicks on "Add new patient" button, user is able to create a new patient.
-   - Log-in/Sign-up creates users. Added to users collections in database
+   - Log-in/Sign-up(Register) creates users. Added to users collections in database
 2. READ
    - On the patient page, all the data shown is fetched from collection named "patients" in database.
 3. UPDATE
@@ -150,4 +166,3 @@ Update Appointment Form Feature:
 Delete Warning Message:
 
 <img width="1023" alt="S-DeleteMsg" src="https://github.com/hlahtoo/MediMemo/assets/88179209/ab1a45c2-8cab-4ebf-b900-67a802ffaa47">
-
