@@ -6,7 +6,7 @@
   "author": "Hla Htoo, Vicki Diaz",
   "license": "MIT",
   "scripts": {
-    "preinstall": "cd front && npm install && npm run build",
+    "preinstall": "npm install && cd front && npm install && npm run build",
     "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www.js"
   },
   "dependencies": {
@@ -24,7 +24,7 @@
     "proptypes": "^1.1.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.2"
   },
   "engines": {
     "node": ">=18.18.0 <19.0.0"

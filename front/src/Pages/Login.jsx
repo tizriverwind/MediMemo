@@ -257,7 +257,7 @@ export default function Login() {
                       id="confirmPassword"
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       value={confirmPassword}
-                      placeholder="Enter Your Password"
+                      placeholder="Confirm Your Password"
                       pattern={`${password}`}
                       required
                       title="Passwords need to match"
