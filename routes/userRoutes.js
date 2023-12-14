@@ -1,3 +1,7 @@
+// I really like how you organize your routes here - the way you separate the functions 
+// associated with authentication is much more reasonable than mine. I cramped everything into one auth.js
+// putting userRoutes and patientRecordRoutes into a separate file? Work of genius.
+
 import express from "express";
 import myDB from "../db/DBUsers.js";
 import LocalStrategy from "passport-local";
